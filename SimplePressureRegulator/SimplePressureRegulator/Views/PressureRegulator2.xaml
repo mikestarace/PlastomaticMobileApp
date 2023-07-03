@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:SimplePressureRegulator.Services"
+             x:Class="SimplePressureRegulator.Views.PressureRegulator2">
+    <ContentPage.Content>
+        <ScrollView HeightRequest="1000" Margin="0,0,0,10">
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Valve Application: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label FontAttributes="Bold" Grid.Row="0" Grid.Column="1" x:Name="ValveApplicationLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+            </Grid>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Pipe size: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="0" Grid.Column="1" x:Name="PipeSizeLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Maximum system inlet pressure: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="1" Grid.Column="1" x:Name="MaxSystemInletLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Desired set pressure: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="2" Grid.Column="1" x:Name="DesiredSetPressureLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Body Material: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="3" Grid.Column="1" x:Name="MaterialLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                    <Label Grid.Row="4" Grid.Column="0" Text="Seal Material: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="4" Grid.Column="1" x:Name="SealMaterialLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                    <Label Grid.Row="5" Grid.Column="0" Text="Required flow rate: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="5" Grid.Column="1" x:Name="RequiredFlowRateLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+
+                </Grid>
+            
+            <Line  Stroke="Red"
+      X2="1000" />
+
+
+            <Label x:Name="GPMLabel" FontSize="18" Margin="10,10,10,0" FontAttributes="Bold"/>
+
+
+
+            <Label x:Name="OneFourthPlaceholder" IsVisible="False" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,10,0,0"/>
+            <Label x:Name="OneFourthPlaceholder2" IsVisible="False" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,0,10,0"/>
+            <Button x:Name="OneFourthButton" IsVisible="False" Text="View on Website" Clicked="OneFourthLink" BackgroundColor="#2196F3" TextColor="White" Margin="10,0,10,0"/>
+
+            <Label x:Name="OneHalfPlaceholder" IsVisible="False" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,10,0,0"/>
+            <Label x:Name="OneHalfPlaceholder2" IsVisible="False" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,0,10,0"/>
+            <Button x:Name="OneHalfButton" IsVisible="False" Text="View on Website" Clicked="OneHalfLink" BackgroundColor="#2196F3" TextColor="White" Margin="10,0,10,0"/>
+            
+            
+            <Label x:Name="ThreeFourthPlaceholder" IsVisible="False" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,10,0,0"/>
+            <Label x:Name="ThreeFourthPlaceholder2" IsVisible="False" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,0,10,0"/>
+            <Button x:Name="ThreeFourthButton" IsVisible="False" Text="View on Website" Clicked="ThreeFourthLink" BackgroundColor="#2196F3" TextColor="White" Margin="10,0,10,0"/>
+            
+            
+            <Label x:Name="OneWholePlaceholder" IsVisible="False" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,10,0,0"/>
+            <Label x:Name="OneWholePlaceholder2" IsVisible="False" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,0,10,0"/>
+            <Button x:Name="OneWholeButton" IsVisible="False" Text="View on Website" Clicked="OneWholeLink" BackgroundColor="#2196F3" TextColor="White" Margin="10,0,10,0"/>
+            
+            
+            <Label x:Name="OneOneHalfPlaceholder" IsVisible="False" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,10,0,0"/>
+            <Label x:Name="OneOneHalfPlaceholder2" IsVisible="False" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,0,10,0"/>
+            <Button x:Name="OneOneHalfButton" IsVisible="False" Text="View on Website" Clicked="OneOneHalfLink" BackgroundColor="#2196F3" TextColor="White" Margin="10,0,10,0"/>
+            
+            
+            <Label x:Name="TwoWholePlaceholder" IsVisible="False" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,10,0,0"/>
+            <Label x:Name="TwoWholePlaceholder2" IsVisible="False" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,0,10,0"/>
+            <Button x:Name="TwoWholeButton" IsVisible="False" Text="View on Website" Clicked="TwoWholeLink" BackgroundColor="#2196F3" TextColor="White" Margin="10,0,10,0"/>
+            
+            
+            <Label x:Name="ThreeWholePlaceholder" IsVisible="False" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,10,0,0"/>
+            <Label x:Name="ThreeWholePlaceholder2" IsVisible="False" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,0,10,0"/>
+            <Button x:Name="ThreeWholeButton" IsVisible="False" Text="View on Website" Clicked="ThreeWholeLink" BackgroundColor="#2196F3" TextColor="White" Margin="10,0,10,0"/>
+            
+
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
