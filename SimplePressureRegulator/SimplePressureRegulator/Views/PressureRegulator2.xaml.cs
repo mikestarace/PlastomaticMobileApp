@@ -783,7 +783,7 @@ namespace SimplePressureRegulator.Views
                         OneWholePlaceholder2.Text = "Valve model number: PR" + ptfeChecker + "100" + sealMaterialCode + "-" + bodyMaterialCode;
                         OneWholePlaceholder2.IsVisible = true;
                         OneWholeButton.IsVisible = true;
-                        oneWholeCode = "PRHM100" + sealMaterialCode + "-" + bodyMaterialCode;
+                        oneWholeCode = "PR" + ptfeChecker + "100" + sealMaterialCode + "-" + bodyMaterialCode;
                         break;
                     }
                     else if (_requiredFlowRate < OneWholeArray[0, i])
