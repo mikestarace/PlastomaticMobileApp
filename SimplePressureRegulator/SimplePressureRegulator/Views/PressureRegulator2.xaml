@@ -13,7 +13,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Text="Valve Application: " FontSize="18" Margin="10,10,0,0"/>
+                <Label Grid.Row="0" Grid.Column="0" Text="Regulator Type: " FontSize="18" Margin="10,10,0,0"/>
                     <Label FontAttributes="Bold" Grid.Row="0" Grid.Column="1" x:Name="ValveApplicationLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
             </Grid>
             
@@ -33,8 +33,10 @@
                     <Label Grid.Row="2" Grid.Column="1" x:Name="DesiredSetPressureLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
                     <Label Grid.Row="3" Grid.Column="0" Text="Body Material: " FontSize="18" Margin="10,10,0,0"/>
                     <Label Grid.Row="3" Grid.Column="1" x:Name="MaterialLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
-                    <Label Grid.Row="4" Grid.Column="0" Text="Seal Material: " FontSize="18" Margin="10,10,0,0"/>
-                    <Label Grid.Row="4" Grid.Column="1" x:Name="SealMaterialLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                    <Label Grid.Row="4" Grid.Column="0" x:Name="SealMaterialLabel1" Text="Seal Material: " FontSize="18" Margin="10,10,0,0" IsVisible="False"/>
+                    <Label Grid.Row="4" Grid.Column="1" x:Name="SealMaterialLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End" IsVisible="False"/>
+                    <Label Grid.Row="4" Grid.Column="0" x:Name="ConnectionTypeLabel1" Text="Spigot Type: " FontSize="18" Margin="10,10,0,0" IsVisible="False"/>
+                    <Label Grid.Row="4" Grid.Column="1" x:Name="ConnectionTypeLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End" IsVisible="False"/>
                     <Label Grid.Row="5" Grid.Column="0" Text="Required flow rate: " FontSize="18" Margin="10,10,0,0"/>
                     <Label Grid.Row="5" Grid.Column="1" x:Name="RequiredFlowRateLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
 
@@ -52,7 +54,11 @@
             <Label x:Name="OneFourthPlaceholder2" IsVisible="False" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,0,10,0"/>
             <Button x:Name="OneFourthButton" IsVisible="False" Text="View on Website" Clicked="OneFourthLink" BackgroundColor="#2196F3" TextColor="White" Margin="10,0,10,0"/>
 
-            <Label x:Name="OneHalfPlaceholder" IsVisible="False" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,10,0,0"/>
+                <Label x:Name="OneFourthPlaceholder3" IsVisible="False" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,10,0,0"/>
+                <Label x:Name="OneFourthPlaceholder4" IsVisible="False" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,0,10,0"/>
+                <Button x:Name="OneFourthButton2" IsVisible="False" Text="View on Website" Clicked="OneFourthLink2" BackgroundColor="#2196F3" TextColor="White" Margin="10,0,10,0"/>
+
+                <Label x:Name="OneHalfPlaceholder" IsVisible="False" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,10,0,0"/>
             <Label x:Name="OneHalfPlaceholder2" IsVisible="False" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,0,10,0"/>
             <Button x:Name="OneHalfButton" IsVisible="False" Text="View on Website" Clicked="OneHalfLink" BackgroundColor="#2196F3" TextColor="White" Margin="10,0,10,0"/>
             
