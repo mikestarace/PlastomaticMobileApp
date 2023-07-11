@@ -985,15 +985,15 @@ namespace SimplePressureRegulator.Views
             switch (connectionType)
             {
                 case 0: // Asahi Spigot
-                    ConnectionTypeLabel.Text = "Asahi Spigot";
+                    ConnectionTypeLabel.Text = "Asahi";
                     connectionTypeCode = "1";
                     break;
                 case 1: // GF Spigot
-                    ConnectionTypeLabel.Text = "GF Spigot";
+                    ConnectionTypeLabel.Text = "GF";
                     connectionTypeCode = "2";
                     break;
                 case 2: // IPS Spigot
-                    ConnectionTypeLabel.Text = "IPS Spigot";
+                    ConnectionTypeLabel.Text = "IPS";
                     connectionTypeCode = "3";
                     break;
             }
