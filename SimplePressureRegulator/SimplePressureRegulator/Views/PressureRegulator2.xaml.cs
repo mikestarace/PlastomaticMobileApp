@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -58,7 +59,7 @@ namespace SimplePressureRegulator.Views
         }
 
 
-        public PressureRegulator2(int? maxInletPressure, int? _desiredSetPressure, int _requiredFlowRate, int? valveApplication, int? valveBodyMaterial, int? valveSealMaterial, int? connectionType, int? valveSize)
+        public PressureRegulator2(int? maxInletPressure, int? _desiredSetPressure, int _requiredFlowRate, int? valveApplication, int? valveBodyMaterial, int? valveSealMaterial, int? connectionType, int? gaugeType, int? valveSize)
         {
             InitializeComponent();
             RequiredFlowRateLabel.Text = _requiredFlowRate.ToString() + " GPM";
@@ -681,12 +682,34 @@ namespace SimplePressureRegulator.Views
                     SealMaterialLabel1.IsVisible = true;
                     CalculatePRHM(valveBodyMaterial, valveSealMaterial, _requiredFlowRate, OneFourthArray, OneHalfArray, ThreeFourthArray, OneWholeArray, OneOneHalfArray, TwoWholeArray, ThreeWholeArray);
                     break;
-                case 1: // Ultra-Pure Elastomer-Free
+                case 1: // Differential Pressure Regulator
+                    ValveApplicationLabel.Text = "High Performance Pressure Regulator";
+                    SealMaterialLabel.IsVisible = true;
+                    SealMaterialLabel1.IsVisible = true;
+                    CalculatePRD(valveBodyMaterial, valveSealMaterial, _requiredFlowRate, OneFourthArray, OneHalfArray, ThreeFourthArray, OneWholeArray, OneOneHalfArray, TwoWholeArray, ThreeWholeArray);
+                    break;
+                case 2: // PRHU
+
+                    //TODO: Add PRHU Configuration
+
+                    break;
+                case 3: // Ultra-Pure Elastomer-Free
                     ValveApplicationLabel.Text = "Ultra-Pure Elastomer-Free";
                     MaterialLabel.Text = "PVDF";
                     ConnectionTypeLabel.IsVisible = true;
                     ConnectionTypeLabel1.IsVisible = true;
                     CalculateUPR(connectionType, _requiredFlowRate, OneFourthArray, OneHalfArray, ThreeFourthArray, OneWholeArray, OneOneHalfArray, TwoWholeArray, ThreeWholeArray);
+                    break;
+                case 4: // Ultra-Pure Shutoff Design
+                    ValveApplicationLabel.Text = "Ultra-Pure Shutoff Design";
+                    MaterialLabel.Text = "PVDF";
+                    ConnectionTypeLabel.IsVisible = true;
+                    ConnectionTypeLabel1.IsVisible = true;
+                    Grid.SetRow(RequiredFlowRateLabel, 6);
+                    Grid.SetRow(RequiredFlowRateLabel1, 6);
+                    GaugeLabel.IsVisible = true;
+                    GaugeLabel1.IsVisible = true;
+                    CalculateUPRS(connectionType, gaugeType, _requiredFlowRate, OneFourthArray, OneHalfArray, ThreeFourthArray, OneWholeArray, OneOneHalfArray, TwoWholeArray, ThreeWholeArray);
                     break;
             }
 
@@ -1052,7 +1075,7 @@ namespace SimplePressureRegulator.Views
                     }
                     else if (_requiredFlowRate < OneHalfArray[0, i])
                     {
-                        OneHalfPlaceholder.Text = "1/2\" valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneHalfArray[1, i - 1] + " and " + OneHalfArray[1, i] + " PSI";
+                        OneHalfPlaceholder.Text = "20 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneHalfArray[1, i - 1] + " and " + OneHalfArray[1, i] + " PSI";
                         OneHalfPlaceholder.IsVisible = true;
                         OneHalfPlaceholder2.Text = "Valve model number: UPR20TSP" + connectionTypeCode + "-PF";
                         OneHalfPlaceholder2.IsVisible = true;
@@ -1172,6 +1195,393 @@ namespace SimplePressureRegulator.Views
             }
 
         } // End of UPR Method
+
+        public void CalculateUPRS(int? connectionType, int? gaugeType, int _requiredFlowRate, double[,] OneFourthArray, double[,] OneHalfArray, double[,] ThreeFourthArray, double[,] OneWholeArray, double[,] OneOneHalfArray, double[,] TwoWholeArray, double[,] ThreeWholeArray)
+        {
+            string connectionTypeCode = "";
+            string gaugeCode = "";
+            switch (connectionType)
+            {
+                case 0: // Asahi Spigot
+                    ConnectionTypeLabel.Text = "Asahi";
+                    connectionTypeCode = "1";
+                    break;
+                case 1: // GF Spigot
+                    ConnectionTypeLabel.Text = "GF";
+                    connectionTypeCode = "2";
+                    break;
+                case 2: // IPS Spigot
+                    ConnectionTypeLabel.Text = "IPS";
+                    connectionTypeCode = "3";
+                    break;
+            }
+            switch (gaugeType)
+            {
+                case 0: // No Gauge
+                    GaugeLabel.Text = "None";
+                    break;
+                case 1: // Left-to-Right Flow
+                    GaugeLabel.Text = "Left-to-Right";
+                    gaugeCode = "-LR";
+                    break;
+                case 2: // Right-to-Left Flow
+                    GaugeLabel.Text = "Right-to-Left";
+                    gaugeCode = "-RL";
+                    break;
+            }
+
+            if (_requiredFlowRate >= OneHalfArray[0, 0] && _requiredFlowRate <= OneHalfArray[0, 4])
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (_requiredFlowRate == OneHalfArray[0, i])
+                    {
+                        OneHalfPlaceholder.Text = "20 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + OneHalfArray[1, i] + " PSI";
+                        OneHalfPlaceholder.IsVisible = true;
+                        OneHalfPlaceholder2.Text = "Valve model number: UPRS20-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        OneHalfPlaceholder2.IsVisible = true;
+                        OneHalfButton.IsVisible = true;
+                        oneHalfCode = "UPRS20-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        break;
+                    }
+                    else if (_requiredFlowRate < OneHalfArray[0, i])
+                    {
+                        OneHalfPlaceholder.Text = "20 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneHalfArray[1, i - 1] + " and " + OneHalfArray[1, i] + " PSI";
+                        OneHalfPlaceholder.IsVisible = true;
+                        OneHalfPlaceholder2.Text = "Valve model number: UPRS20-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        OneHalfPlaceholder2.IsVisible = true;
+                        OneHalfButton.IsVisible = true;
+                        oneHalfCode = "UPRS20-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        break;
+                    }
+                }
+            }
+
+            if (_requiredFlowRate >= ThreeFourthArray[0, 0] && _requiredFlowRate <= ThreeFourthArray[0, 4])
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (_requiredFlowRate == ThreeFourthArray[0, i])
+                    {
+                        ThreeFourthPlaceholder.Text = "25 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + ThreeFourthArray[1, i] + " PSI";
+                        ThreeFourthPlaceholder.IsVisible = true;
+                        ThreeFourthPlaceholder2.Text = "Valve model number: UPRS25-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        ThreeFourthPlaceholder2.IsVisible = true;
+                        ThreeFourthButton.IsVisible = true;
+                        threeFourthCode = "UPRS25-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        break;
+                    }
+                    else if (_requiredFlowRate < ThreeFourthArray[0, i])
+                    {
+                        ThreeFourthPlaceholder.Text = "25 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + ThreeFourthArray[1, i - 1] + " and " + ThreeFourthArray[1, i] + " PSI";
+                        ThreeFourthPlaceholder.IsVisible = true;
+                        ThreeFourthPlaceholder2.Text = "Valve model number: UPRS25-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        ThreeFourthPlaceholder2.IsVisible = true;
+                        ThreeFourthButton.IsVisible = true;
+                        threeFourthCode = "UPRS25-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        break;
+                    }
+                }
+            }
+
+            if (_requiredFlowRate >= OneWholeArray[0, 0] && _requiredFlowRate <= OneWholeArray[0, 4])
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (_requiredFlowRate == OneWholeArray[0, i])
+                    {
+                        OneWholePlaceholder.Text = "32 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + OneWholeArray[1, i] + " PSI";
+                        OneWholePlaceholder.IsVisible = true;
+                        OneWholePlaceholder2.Text = "Valve model number: UPRS32-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        OneWholePlaceholder2.IsVisible = true;
+                        OneWholeButton.IsVisible = true;
+                        oneWholeCode = "UPRS32-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        break;
+                    }
+                    else if (_requiredFlowRate < OneWholeArray[0, i])
+                    {
+                        OneWholePlaceholder.Text = "32 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneWholeArray[1, i - 1] + " and " + OneWholeArray[1, i] + " PSI";
+                        OneWholePlaceholder.IsVisible = true;
+                        OneWholePlaceholder2.Text = "Valve model number: UPRS32-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        OneWholePlaceholder2.IsVisible = true;
+                        OneWholeButton.IsVisible = true;
+                        oneWholeCode = "UPRS32-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        break;
+                    }
+                }
+            }
+
+            if (_requiredFlowRate >= OneOneHalfArray[0, 0] && _requiredFlowRate <= OneOneHalfArray[0, 4])
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (_requiredFlowRate == OneOneHalfArray[0, i])
+                    {
+                        OneOneHalfPlaceholder.Text = "50 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + OneOneHalfArray[1, i] + " PSI";
+                        OneOneHalfPlaceholder.IsVisible = true;
+                        OneOneHalfPlaceholder2.Text = "Valve model number: UPRS50-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        OneOneHalfPlaceholder2.IsVisible = true;
+                        OneOneHalfButton.IsVisible = true;
+                        oneOneHalfCode = "UPRS50-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        break;
+                    }
+                    else if (_requiredFlowRate < OneOneHalfArray[0, i])
+                    {
+                        OneOneHalfPlaceholder.Text = "50 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneOneHalfArray[1, i - 1] + " and " + OneOneHalfArray[1, i] + " PSI";
+                        OneOneHalfPlaceholder.IsVisible = true;
+                        OneOneHalfPlaceholder2.Text = "Valve model number: UPRS50-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        OneOneHalfPlaceholder2.IsVisible = true;
+                        OneOneHalfButton.IsVisible = true;
+                        oneOneHalfCode = "UPRS50-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        break;
+                    }
+                }
+            }
+
+            if (_requiredFlowRate >= TwoWholeArray[0, 0] && _requiredFlowRate <= TwoWholeArray[0, 4])
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (_requiredFlowRate == TwoWholeArray[0, i])
+                    {
+                        TwoWholePlaceholder.Text = "63 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + TwoWholeArray[1, i] + " PSI";
+                        TwoWholePlaceholder.IsVisible = true;
+                        TwoWholePlaceholder2.Text = "Valve model number: UPRS63-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        TwoWholePlaceholder2.IsVisible = true;
+                        TwoWholeButton.IsVisible = true;
+                        twoWholeCode = "UPRS63-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        break;
+                    }
+                    else if (_requiredFlowRate < TwoWholeArray[0, i])
+                    {
+                        TwoWholePlaceholder.Text = "63 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + TwoWholeArray[1, i - 1] + " and " + TwoWholeArray[1, i] + " PSI";
+                        TwoWholePlaceholder.IsVisible = true;
+                        TwoWholePlaceholder2.Text = "Valve model number: UPRS63-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        TwoWholePlaceholder2.IsVisible = true;
+                        TwoWholeButton.IsVisible = true;
+                        twoWholeCode = "UPRS63-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        break;
+                    }
+                }
+            }
+        } // End of UPRS Method
+
+        void CalculatePRD(int? valveBodyMaterial, int? valveSealMaterial, int _requiredFlowRate, double[,] OneFourthArray, double[,] OneHalfArray, double[,] ThreeFourthArray, double[,] OneWholeArray, double[,] OneOneHalfArray, double[,] TwoWholeArray, double[,] ThreeWholeArray)
+        {
+            string sealMaterialCode = "";
+            string bodyMaterialCode = "";
+            switch (valveBodyMaterial)
+            {
+                case 0: // PVC
+                    MaterialLabel.Text = "PVC";
+                    bodyMaterialCode = "PV";
+                    break;
+                case 1: // Polypro
+                    MaterialLabel.Text = "Polypro";
+                    bodyMaterialCode = "PP";
+                    break;
+            }
+            switch (valveSealMaterial)
+            {
+                case 0: // Viton
+                    SealMaterialLabel.Text = "Viton";
+                    sealMaterialCode = "V";
+                    break;
+                case 1: // EPDM
+                    SealMaterialLabel.Text = "EPDM";
+                    sealMaterialCode = "EP";
+                    break;
+            }
+            // 1/4" Valves
+            if (_requiredFlowRate >= OneFourthArray[0, 0] && _requiredFlowRate <= OneFourthArray[0, 4])
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (_requiredFlowRate == OneFourthArray[0, i])
+                    {
+                        OneFourthPlaceholder.Text = "1/4\" valve, pressure drop at " + _requiredFlowRate + " GPM: " + OneFourthArray[1, i] + " PSI";
+                        OneFourthPlaceholder.IsVisible = true;
+                        OneFourthPlaceholder2.Text = "Valve model number: PRD025" + sealMaterialCode + "-" + bodyMaterialCode;
+                        OneFourthPlaceholder2.IsVisible = true;
+                        OneFourthButton.IsVisible = true;
+                        oneFourthCode = "PRD025" + sealMaterialCode + "-" + bodyMaterialCode;
+                        break;
+                    }
+                    else if (_requiredFlowRate < OneFourthArray[0, i])
+                    {
+                        OneFourthPlaceholder.Text = "1/4\" valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneFourthArray[1, i - 1] + " and " + OneFourthArray[1, i] + " PSI";
+                        OneFourthPlaceholder.IsVisible = true;
+                        OneFourthPlaceholder2.Text = "Valve model number: PRD025" + sealMaterialCode + "-" + bodyMaterialCode;
+                        OneFourthPlaceholder2.IsVisible = true;
+                        OneFourthButton.IsVisible = true;
+                        oneFourthCode = "PRD025" + sealMaterialCode + "-" + bodyMaterialCode;
+                        break;
+                    }
+                }
+            }
+            // 1/2" Valves
+            if (_requiredFlowRate >= OneHalfArray[0, 0] && _requiredFlowRate <= OneHalfArray[0, 4])
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (_requiredFlowRate == OneHalfArray[0, i])
+                    {
+                        OneHalfPlaceholder.Text = "1/2\" valve, pressure drop at " + _requiredFlowRate + " GPM: " + OneHalfArray[1, i] + " PSI";
+                        OneHalfPlaceholder.IsVisible = true;
+                        OneHalfPlaceholder2.Text = "Valve model number: PRD050" + sealMaterialCode + "-" + bodyMaterialCode;
+                        OneHalfPlaceholder2.IsVisible = true;
+                        OneHalfButton.IsVisible = true;
+                        oneHalfCode = "PRD050" + sealMaterialCode + "-" + bodyMaterialCode;
+                        break;
+                    }
+                    else if (_requiredFlowRate < OneHalfArray[0, i])
+                    {
+                        OneHalfPlaceholder.Text = "1/2\" valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneHalfArray[1, i - 1] + " and " + OneHalfArray[1, i] + " PSI";
+                        OneHalfPlaceholder.IsVisible = true;
+                        OneHalfPlaceholder2.Text = "Valve model number: PRD050" + sealMaterialCode + "-" + bodyMaterialCode;
+                        OneHalfPlaceholder2.IsVisible = true;
+                        OneHalfButton.IsVisible = true;
+                        oneHalfCode = "PRD050" + sealMaterialCode + "-" + bodyMaterialCode;
+                        break;
+                    }
+                }
+            }
+            // 3/4" Valves
+            if (_requiredFlowRate >= ThreeFourthArray[0, 0] && _requiredFlowRate <= ThreeFourthArray[0, 4])
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (_requiredFlowRate == ThreeFourthArray[0, i])
+                    {
+                        ThreeFourthPlaceholder.Text = "3/4\" valve, pressure drop at " + _requiredFlowRate + " GPM: " + ThreeFourthArray[1, i] + " PSI";
+                        ThreeFourthPlaceholder.IsVisible = true;
+                        ThreeFourthPlaceholder2.Text = "Valve model number: PRDM075" + sealMaterialCode + "-" + bodyMaterialCode;
+                        ThreeFourthPlaceholder2.IsVisible = true;
+                        ThreeFourthButton.IsVisible = true;
+                        threeFourthCode = "PRDM075" + sealMaterialCode + "-" + bodyMaterialCode;
+                        break;
+                    }
+                    else if (_requiredFlowRate < ThreeFourthArray[0, i])
+                    {
+                        ThreeFourthPlaceholder.Text = "3/4\" valve, pressure drop at " + _requiredFlowRate + " GPM: between " + ThreeFourthArray[1, i - 1] + " and " + ThreeFourthArray[1, i] + " PSI";
+                        ThreeFourthPlaceholder.IsVisible = true;
+                        ThreeFourthPlaceholder2.Text = "Valve model number: PRDM075" + sealMaterialCode + "-" + bodyMaterialCode;
+                        ThreeFourthPlaceholder2.IsVisible = true;
+                        ThreeFourthButton.IsVisible = true;
+                        threeFourthCode = "PRDM075" + sealMaterialCode + "-" + bodyMaterialCode;
+                        break;
+                    }
+                }
+            }
+            // 1" Valves
+            if (_requiredFlowRate >= OneWholeArray[0, 0] && _requiredFlowRate <= OneWholeArray[0, 4])
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (_requiredFlowRate == OneWholeArray[0, i])
+                    {
+                        OneWholePlaceholder.Text = "1\" valve, pressure drop at " + _requiredFlowRate + " GPM: " + OneWholeArray[1, i] + " PSI";
+                        OneWholePlaceholder.IsVisible = true;
+                        OneWholePlaceholder2.Text = "Valve model number: PRDM100" + sealMaterialCode + "-" + bodyMaterialCode;
+                        OneWholePlaceholder2.IsVisible = true;
+                        OneWholeButton.IsVisible = true;
+                        oneWholeCode = "PRDM100" + sealMaterialCode + "-" + bodyMaterialCode;
+                        break;
+                    }
+                    else if (_requiredFlowRate < OneWholeArray[0, i])
+                    {
+                        OneWholePlaceholder.Text = "1\" valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneWholeArray[1, i - 1] + " and " + OneWholeArray[1, i] + " PSI";
+                        OneWholePlaceholder.IsVisible = true;
+                        OneWholePlaceholder2.Text = "Valve model number: PRDM100" + sealMaterialCode + "-" + bodyMaterialCode;
+                        OneWholePlaceholder2.IsVisible = true;
+                        OneWholeButton.IsVisible = true;
+                        oneWholeCode = "PRDM100" + sealMaterialCode + "-" + bodyMaterialCode;
+                        break;
+                    }
+                }
+            }
+            //1 1/2" Valves
+            if (_requiredFlowRate >= OneOneHalfArray[0, 0] && _requiredFlowRate <= OneOneHalfArray[0, 4])
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (_requiredFlowRate == OneOneHalfArray[0, i])
+                    {
+                        OneOneHalfPlaceholder.Text = "1 1/2\" valve, pressure drop at " + _requiredFlowRate + " GPM: " + OneOneHalfArray[1, i] + " PSI";
+                        OneOneHalfPlaceholder.IsVisible = true;
+                        OneOneHalfPlaceholder2.Text = "Valve model number: PRDM150" + sealMaterialCode + "-" + bodyMaterialCode;
+                        OneOneHalfPlaceholder2.IsVisible = true;
+                        OneOneHalfButton.IsVisible = true;
+                        oneOneHalfCode = "PRDM150" + sealMaterialCode + "-" + bodyMaterialCode;
+                        break;
+                    }
+                    else if (_requiredFlowRate < OneOneHalfArray[0, i])
+                    {
+                        OneOneHalfPlaceholder.Text = "1 1/2\" valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneOneHalfArray[1, i - 1] + " and " + OneOneHalfArray[1, i] + " PSI";
+                        OneOneHalfPlaceholder.IsVisible = true;
+                        OneOneHalfPlaceholder2.Text = "Valve model number: PRDM150" + sealMaterialCode + "-" + bodyMaterialCode;
+                        OneOneHalfPlaceholder2.IsVisible = true;
+                        OneOneHalfButton.IsVisible = true;
+                        oneOneHalfCode = "PRDM150" + sealMaterialCode + "-" + bodyMaterialCode;
+                        break;
+                    }
+                }
+            }
+            // 2" Valves
+            if (_requiredFlowRate >= TwoWholeArray[0, 0] && _requiredFlowRate <= TwoWholeArray[0, 4])
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (_requiredFlowRate == TwoWholeArray[0, i])
+                    {
+                        TwoWholePlaceholder.Text = "2\" valve, pressure drop at " + _requiredFlowRate + " GPM: " + TwoWholeArray[1, i] + " PSI";
+                        TwoWholePlaceholder.IsVisible = true;
+                        TwoWholePlaceholder2.Text = "Valve model number: PRDM200" + sealMaterialCode + "-" + bodyMaterialCode;
+                        TwoWholePlaceholder2.IsVisible = true;
+                        TwoWholeButton.IsVisible = true;
+                        twoWholeCode = "PRDM200" + sealMaterialCode + "-" + bodyMaterialCode;
+                        break;
+                    }
+                    else if (_requiredFlowRate < TwoWholeArray[0, i])
+                    {
+                        TwoWholePlaceholder.Text = "2\" valve, pressure drop at " + _requiredFlowRate + " GPM: between " + TwoWholeArray[1, i - 1] + " and " + TwoWholeArray[1, i] + " PSI";
+                        TwoWholePlaceholder.IsVisible = true;
+                        TwoWholePlaceholder2.Text = "Valve model number: PRDM200" + sealMaterialCode + "-" + bodyMaterialCode;
+                        TwoWholePlaceholder2.IsVisible = true;
+                        TwoWholeButton.IsVisible = true;
+                        twoWholeCode = "PRDM200" + sealMaterialCode + "-" + bodyMaterialCode;
+                        break;
+                    }
+                }
+            }
+            // 3" Valves
+            if (_requiredFlowRate >= ThreeWholeArray[0, 0] && _requiredFlowRate <= ThreeWholeArray[0, 4])
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (_requiredFlowRate == ThreeWholeArray[0, i])
+                    {
+                        ThreeWholePlaceholder.Text = "3\" valve, pressure drop at " + _requiredFlowRate + " GPM: " + ThreeWholeArray[1, i] + " PSI";
+                        ThreeWholePlaceholder.IsVisible = true;
+                        ThreeWholePlaceholder2.Text = "Valve model number: PRD300" + sealMaterialCode + "-" + bodyMaterialCode;
+                        ThreeWholePlaceholder2.IsVisible = true;
+                        ThreeWholeButton.IsVisible = true;
+                        threeWholeCode = "PRD300" + sealMaterialCode + "-" + bodyMaterialCode;
+                        break;
+                    }
+                    else if (_requiredFlowRate < ThreeWholeArray[0, i])
+                    {
+                        ThreeWholePlaceholder.Text = "3\" valve, pressure drop at " + _requiredFlowRate + " GPM: between " + ThreeWholeArray[1, i - 1] + " and " + ThreeWholeArray[1, i] + " PSI";
+                        ThreeWholePlaceholder.IsVisible = true;
+                        ThreeWholePlaceholder2.Text = "Valve model number: PRD300" + sealMaterialCode + "-" + bodyMaterialCode;
+                        ThreeWholePlaceholder2.IsVisible = true;
+                        ThreeWholeButton.IsVisible = true;
+                        threeWholeCode = "PRD300" + sealMaterialCode + "-" + bodyMaterialCode;
+                        break;
+                    }
+                }
+            }
+    } // End of PRD Method
 
 
         }

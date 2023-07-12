@@ -11,7 +11,7 @@
        HorizontalOptions="Center" />
         <Label Text="" FontSize="20" Padding="30,10,30,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
         <Label Text="Valve Specification App" FontSize="Title" Padding="30,10,30,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
-        <Label Text="Development Version 0.1" FontSize="16" Padding="30,0,30,0"  HorizontalOptions="Center"/>
+        <Label Text="Alpha Version 0.3" FontSize="16" Padding="30,0,30,0"  HorizontalOptions="Center"/>
         <StackLayout Margin="10,10,10,0">
             <Button Text="Pressure Regulator Tool" Clicked="StartPressureRegulator" BackgroundColor="#2196F3" TextColor="White"/>
             <Button Text="More coming soon..."/>

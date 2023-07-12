@@ -37,7 +37,9 @@
                     <Label Grid.Row="4" Grid.Column="1" x:Name="SealMaterialLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End" IsVisible="False"/>
                     <Label Grid.Row="4" Grid.Column="0" x:Name="ConnectionTypeLabel1" Text="Spigot Type: " FontSize="18" Margin="10,10,0,0" IsVisible="False"/>
                     <Label Grid.Row="4" Grid.Column="1" x:Name="ConnectionTypeLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End" IsVisible="False"/>
-                    <Label Grid.Row="5" Grid.Column="0" Text="Required flow rate: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="5" Grid.Column="0" x:Name="GaugeLabel1" Text="Gauge: " FontSize="18" Margin="10,10,0,0" IsVisible="False"/>
+                    <Label Grid.Row="5" Grid.Column="1" x:Name="GaugeLabel" FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End" IsVisible="False"/>
+                    <Label Grid.Row="5" Grid.Column="0" x:Name="RequiredFlowRateLabel1" Text="Required flow rate: " FontSize="18" Margin="10,10,0,0"/>
                     <Label Grid.Row="5" Grid.Column="1" x:Name="RequiredFlowRateLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
 
                 </Grid>
