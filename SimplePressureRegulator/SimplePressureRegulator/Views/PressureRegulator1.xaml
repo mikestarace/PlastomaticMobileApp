@@ -11,7 +11,7 @@
                 <Picker.Items>
                     <x:String>High Performance Pressure Regulator</x:String>
                     <x:String>Differential Pressure Regulator</x:String>
-                    <x:String>PRHU</x:String>
+                    <x:String>Ultra-Pure Metal Ion-Free EPDM</x:String>
                     <x:String>Ultra-Pure Elastomer Free</x:String>
                     <x:String>Ultra-Pure Shutoff Design</x:String>
                 </Picker.Items>
@@ -25,7 +25,7 @@
                 </Picker.Items>
             </Picker>
 
-            <Picker x:Name="sizePicker" Title="Pipe size" SelectedIndexChanged="AssignPipeSize" Margin="10" FontSize="18" IsVisible="False" />
+            <Picker x:Name="sizePicker" Title="Pipe size" SelectedIndexChanged="AssignPipeSize" Margin="10" FontSize="18" IsVisible="False" IsEnabled="False"/>
 
             <Picker x:Name="maxInletPicker" Title="Maximum system inlet pressure" IsEnabled="False" SelectedIndexChanged="AssignMaxInlet" Margin="10" FontSize="18" IsVisible="False"/>
 

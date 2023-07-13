@@ -59,6 +59,7 @@ namespace SimplePressureRegulator.Views
                     connectionTypePicker.IsVisible = false;
                     gaugePicker.IsVisible = false;
                     materialPicker.IsVisible = true;
+                    sizePicker.IsEnabled = true;
                     materialPicker.Items.Add("PVC");
                     materialPicker.Items.Add("CPVC");
                     materialPicker.Items.Add("Polypro");
@@ -77,6 +78,7 @@ namespace SimplePressureRegulator.Views
                     gaugePicker.IsVisible = false;
                     connectionTypePicker.IsVisible = false;
                     materialPicker.IsVisible = true;
+                    sizePicker.IsEnabled = true;
                     materialPicker.Items.Add("PVC");
                     materialPicker.Items.Add("Polypro");
                     sealMaterialPicker.IsVisible = true;
@@ -98,6 +100,7 @@ namespace SimplePressureRegulator.Views
                     materialPicker.IsVisible = false;
                     sealMaterialPicker.IsVisible = false;
                     gaugePicker.IsVisible = false;
+                    sizePicker.IsEnabled = true;
                     connectionTypePicker.IsVisible = true;
                     sizePicker.Items.Add("1/4\"");
                     sizePicker.Items.Add("20 mm");
@@ -111,6 +114,7 @@ namespace SimplePressureRegulator.Views
                     sealMaterialPicker.IsVisible = false;
                     connectionTypePicker.IsVisible = true;
                     gaugePicker.IsVisible = true;
+                    sizePicker.IsEnabled = true;
                     sizePicker.Items.Add("20 mm");
                     sizePicker.Items.Add("25 mm");
                     sizePicker.Items.Add("32 mm");
@@ -146,7 +150,27 @@ namespace SimplePressureRegulator.Views
 
             if (connectionType == 0 && valveApplication == 2 || connectionType == 1 && valveApplication == 2)
             {
-
+                sizePicker.Items.Clear();
+                sizePicker.IsEnabled = true;
+                sizePicker.Items.Add("20 mm");
+                sizePicker.Items.Add("25 mm");
+                sizePicker.Items.Add("32 mm");
+                sizePicker.Items.Add("40 mm");
+                sizePicker.Items.Add("50 mm");
+                sizePicker.Items.Add("63 mm");
+                sizePicker.Items.Add("90 mm");
+            }
+            else if (connectionType == 2 && valveApplication == 2)
+            {
+                sizePicker.Items.Clear();
+                sizePicker.IsEnabled = true;
+                sizePicker.Items.Add("1/2\"");
+                sizePicker.Items.Add("3/4\"");
+                sizePicker.Items.Add("1\"");
+                sizePicker.Items.Add("1 1/4\"");
+                sizePicker.Items.Add("1 1/2\"");
+                sizePicker.Items.Add("2\"");
+                sizePicker.Items.Add("3\"");
             }
         }
 
@@ -193,9 +217,21 @@ namespace SimplePressureRegulator.Views
                     maxInletPicker.Items.Add("10 PSI");
                     maxInletPicker.Items.Add("25 & Up");
                     break;
-
+                case 7: // Extra for 1 1/4"
+                    maxInletPicker.Items.Add("10 PSI");
+                    maxInletPicker.Items.Add("25 & Up");
+                    break;
             }
 
+            // Making sure that we send the right index number for calculating Max Flow Rate.
+            if (valveApplication == 2 && valveSize < 4)
+            {
+                valveSize += 1; // We add 1 to account for 1/4" pipe size not being in the selection. Selection starts at 1/2"
+            }
+            if (valveApplication == 4)
+            {
+                valveSize += 1; // We add 1 to account for 1/4" pipe size not being in the selection. Selection starts at 20mm AKA 1/2"
+            }
         }
 
         void AssignMaxInlet(object sender, EventArgs args)
@@ -245,10 +281,14 @@ namespace SimplePressureRegulator.Views
                     }
                     break;
                 case 2: // PRHU
-                    await DisplayAlert("Error", "PRHU is not configured yet. Please make a different selection.", "Okay");
-
-                    // TODO: Add PRHU configuration
-
+                    if (_desiredSetPressure != null && connectionType != null && valveSize != null && maxInletPressure != null)
+                    {
+                        await Navigation.PushAsync(new PressureRegulator2(maxInletPressure, _desiredSetPressure, _requiredFlowRate, valveApplication, valveBodyMaterial, valveSealMaterial, connectionType, gaugeType, valveSize));
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "Please make a selection", "Okay");
+                    }
                     break;
                 case 3: // Ultra-Pure Elastomer-Free
                     if (_desiredSetPressure != null && connectionType != null && valveSize != null && maxInletPressure != null)
