@@ -1067,20 +1067,36 @@ namespace SimplePressureRegulator.Views
                     {
                         OneHalfPlaceholder.Text = "20 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + OneHalfArray[1, i] + " PSI";
                         OneHalfPlaceholder.IsVisible = true;
-                        OneHalfPlaceholder2.Text = "Valve model number: UPR20TSP" + connectionTypeCode + "-PF";
-                        OneHalfPlaceholder2.IsVisible = true;
-                        OneHalfButton.IsVisible = true;
-                        oneHalfCode = "UPR20TSP" + connectionTypeCode + "-PF";                      
+                        if (connectionType == 2)
+                        {
+                            OneHalfPlaceholder2.Text = "Valve model number: Consult Factory";
+                            OneHalfPlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            OneHalfPlaceholder2.Text = "Valve model number: UPR20TSP" + connectionTypeCode + "-PF";
+                            OneHalfPlaceholder2.IsVisible = true;
+                            OneHalfButton.IsVisible = true;
+                            oneHalfCode = "UPR20TSP" + connectionTypeCode + "-PF";
+                        }
                         break;
                     }
                     else if (_requiredFlowRate < OneHalfArray[0, i])
                     {
                         OneHalfPlaceholder.Text = "20 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneHalfArray[1, i - 1] + " and " + OneHalfArray[1, i] + " PSI";
                         OneHalfPlaceholder.IsVisible = true;
-                        OneHalfPlaceholder2.Text = "Valve model number: UPR20TSP" + connectionTypeCode + "-PF";
-                        OneHalfPlaceholder2.IsVisible = true;
-                        OneHalfButton.IsVisible = true;
-                        oneHalfCode = "UPR20TSP" + connectionTypeCode + "-PF";
+                        if (connectionType == 2)
+                        {
+                            OneHalfPlaceholder2.Text = "Valve model number: Consult Factory";
+                            OneHalfPlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            OneHalfPlaceholder2.Text = "Valve model number: UPR20TSP" + connectionTypeCode + "-PF";
+                            OneHalfPlaceholder2.IsVisible = true;
+                            OneHalfButton.IsVisible = true;
+                            oneHalfCode = "UPR20TSP" + connectionTypeCode + "-PF";
+                        }
                         break;
                     }
                 }
@@ -1094,20 +1110,36 @@ namespace SimplePressureRegulator.Views
                     {
                         ThreeFourthPlaceholder.Text = "25 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + ThreeFourthArray[1, i] + " PSI";
                         ThreeFourthPlaceholder.IsVisible = true;
-                        ThreeFourthPlaceholder2.Text = "Valve model number: UPR25TSP" + connectionTypeCode + "-PF";
-                        ThreeFourthPlaceholder2.IsVisible = true;
-                        ThreeFourthButton.IsVisible = true;
-                        threeFourthCode = "UPR25TSP" + connectionTypeCode + "-PF";
+                        if (connectionType == 2)
+                        {
+                            ThreeFourthPlaceholder2.Text = "Valve model number: Consult Factory";
+                            ThreeFourthPlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            ThreeFourthPlaceholder2.Text = "Valve model number: UPR25TSP" + connectionTypeCode + "-PF";
+                            ThreeFourthPlaceholder2.IsVisible = true;
+                            ThreeFourthButton.IsVisible = true;
+                            threeFourthCode = "UPR25TSP" + connectionTypeCode + "-PF";
+                        }
                         break;
                     }
                     else if (_requiredFlowRate < ThreeFourthArray[0, i])
                     {
                         ThreeFourthPlaceholder.Text = "25 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + ThreeFourthArray[1, i - 1] + " and " + ThreeFourthArray[1, i] + " PSI";
                         ThreeFourthPlaceholder.IsVisible = true;
-                        ThreeFourthPlaceholder2.Text = "Valve model number: UPR25TSP" + connectionTypeCode + "-PF";
-                        ThreeFourthPlaceholder2.IsVisible = true;
-                        ThreeFourthButton.IsVisible = true;
-                        threeFourthCode = "UPR25TSP" + connectionTypeCode + "-PF";
+                        if (connectionType == 2)
+                        {
+                            ThreeFourthPlaceholder2.Text = "Valve model number: Consult Factory";
+                            ThreeFourthPlaceholder2.IsVisible= true;
+                        }
+                        else
+                        {
+                            ThreeFourthPlaceholder2.Text = "Valve model number: UPR25TSP" + connectionTypeCode + "-PF";
+                            ThreeFourthPlaceholder2.IsVisible = true;
+                            ThreeFourthButton.IsVisible = true;
+                            threeFourthCode = "UPR25TSP" + connectionTypeCode + "-PF";
+                        }
                         break;
                     }
                 }
@@ -1121,20 +1153,36 @@ namespace SimplePressureRegulator.Views
                     {
                         OneWholePlaceholder.Text = "32 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + OneWholeArray[1, i] + " PSI";
                         OneWholePlaceholder.IsVisible = true;
-                        OneWholePlaceholder2.Text = "Valve model number: UPR32TSP" + connectionTypeCode + "-PF";
-                        OneWholePlaceholder2.IsVisible = true;
-                        OneWholeButton.IsVisible = true;
-                        oneWholeCode = "UPR32TSP" + connectionTypeCode + "-PF";
+                        if (connectionType == 2)
+                        {
+                            OneWholePlaceholder2.Text = "Valve model number: Consult Factory";
+                            OneWholePlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            OneWholePlaceholder2.Text = "Valve model number: UPR32TSP" + connectionTypeCode + "-PF";
+                            OneWholePlaceholder2.IsVisible = true;
+                            OneWholeButton.IsVisible = true;
+                            oneWholeCode = "UPR32TSP" + connectionTypeCode + "-PF";
+                        }
                         break;
                     }
                     else if (_requiredFlowRate < OneWholeArray[0, i])
                     {
                         OneWholePlaceholder.Text = "32 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneWholeArray[1, i - 1] + " and " + OneWholeArray[1, i] + " PSI";
                         OneWholePlaceholder.IsVisible = true;
-                        OneWholePlaceholder2.Text = "Valve model number: UPR32TSP" + connectionTypeCode + "-PF";
-                        OneWholePlaceholder2.IsVisible = true;
-                        OneWholeButton.IsVisible = true;
-                        oneWholeCode = "UPR32TSP" + connectionTypeCode + "-PF";
+                        if (connectionType == 2)
+                        {
+                            OneWholePlaceholder2.Text = "Valve model number: Consult Factory";
+                            OneWholePlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            OneWholePlaceholder2.Text = "Valve model number: UPR32TSP" + connectionTypeCode + "-PF";
+                            OneWholePlaceholder2.IsVisible = true;
+                            OneWholeButton.IsVisible = true;
+                            oneWholeCode = "UPR32TSP" + connectionTypeCode + "-PF";
+                        }
                         break;
                     }
                 }
@@ -1148,20 +1196,36 @@ namespace SimplePressureRegulator.Views
                     {
                         OneOneHalfPlaceholder.Text = "50 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + OneOneHalfArray[1, i] + " PSI";
                         OneOneHalfPlaceholder.IsVisible = true;
-                        OneOneHalfPlaceholder2.Text = "Valve model number: UPR50TSP" + connectionTypeCode + "-PF";
-                        OneOneHalfPlaceholder2.IsVisible = true;
-                        OneOneHalfButton.IsVisible = true;
-                        oneOneHalfCode = "UPR50TSP" + connectionTypeCode + "-PF";
+                        if (connectionType == 2)
+                        {
+                            OneOneHalfPlaceholder2.Text = "Valve model number: Consult Factory";
+                            OneOneHalfPlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            OneOneHalfPlaceholder2.Text = "Valve model number: UPR50TSP" + connectionTypeCode + "-PF";
+                            OneOneHalfPlaceholder2.IsVisible = true;
+                            OneOneHalfButton.IsVisible = true;
+                            oneOneHalfCode = "UPR50TSP" + connectionTypeCode + "-PF";
+                        }
                         break;
                     }
                     else if (_requiredFlowRate < OneOneHalfArray[0, i])
                     {
                         OneOneHalfPlaceholder.Text = "50 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneOneHalfArray[1, i - 1] + " and " + OneOneHalfArray[1, i] + " PSI";
                         OneOneHalfPlaceholder.IsVisible = true;
-                        OneOneHalfPlaceholder2.Text = "Valve model number: UPR50TSP" + connectionTypeCode + "-PF";
-                        OneOneHalfPlaceholder2.IsVisible = true;
-                        OneOneHalfButton.IsVisible = true;
-                        oneOneHalfCode = "UPR50TSP" + connectionTypeCode + "-PF";
+                        if (connectionType == 2)
+                        {
+                            OneOneHalfPlaceholder2.Text = "Valve model number: Consult Factory";
+                            OneOneHalfPlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            OneOneHalfPlaceholder2.Text = "Valve model number: UPR50TSP" + connectionTypeCode + "-PF";
+                            OneOneHalfPlaceholder2.IsVisible = true;
+                            OneOneHalfButton.IsVisible = true;
+                            oneOneHalfCode = "UPR50TSP" + connectionTypeCode + "-PF";
+                        }
                         break;
                     }
                 }
@@ -1175,20 +1239,36 @@ namespace SimplePressureRegulator.Views
                     {
                         TwoWholePlaceholder.Text = "63 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + TwoWholeArray[1, i] + " PSI";
                         TwoWholePlaceholder.IsVisible = true;
-                        TwoWholePlaceholder2.Text = "Valve model number: UPR63TSP" + connectionTypeCode + "-PF";
-                        TwoWholePlaceholder2.IsVisible = true;
-                        TwoWholeButton.IsVisible = true;
-                        twoWholeCode = "UPR63TSP" + connectionTypeCode + "-PF";
+                        if (connectionType == 2)
+                        {
+                            TwoWholePlaceholder2.Text = "Valve model number: Consult Factory";
+                            TwoWholePlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            TwoWholePlaceholder2.Text = "Valve model number: UPR63TSP" + connectionTypeCode + "-PF";
+                            TwoWholePlaceholder2.IsVisible = true;
+                            TwoWholeButton.IsVisible = true;
+                            twoWholeCode = "UPR63TSP" + connectionTypeCode + "-PF";
+                        }
                         break;
                     }
                     else if (_requiredFlowRate < TwoWholeArray[0, i])
                     {
                         TwoWholePlaceholder.Text = "63 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + TwoWholeArray[1, i - 1] + " and " + TwoWholeArray[1, i] + " PSI";
                         TwoWholePlaceholder.IsVisible = true;
-                        TwoWholePlaceholder2.Text = "Valve model number: UPR63TSP" + connectionTypeCode + "-PF";
-                        TwoWholePlaceholder2.IsVisible = true;
-                        TwoWholeButton.IsVisible = true;
-                        twoWholeCode = "UPR63TSP" + connectionTypeCode + "-PF";
+                        if (connectionType == 2)
+                        {
+                            TwoWholePlaceholder2.Text = "Valve model number: Consult Factory";
+                            TwoWholePlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            TwoWholePlaceholder2.Text = "Valve model number: UPR63TSP" + connectionTypeCode + "-PF";
+                            TwoWholePlaceholder2.IsVisible = true;
+                            TwoWholeButton.IsVisible = true;
+                            twoWholeCode = "UPR63TSP" + connectionTypeCode + "-PF";
+                        }
                         break;
                     }
                 }
@@ -1238,20 +1318,36 @@ namespace SimplePressureRegulator.Views
                     {
                         OneHalfPlaceholder.Text = "20 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + OneHalfArray[1, i] + " PSI";
                         OneHalfPlaceholder.IsVisible = true;
-                        OneHalfPlaceholder2.Text = "Valve model number: UPRS20-SP" + connectionTypeCode + "-PF" + gaugeCode;
-                        OneHalfPlaceholder2.IsVisible = true;
-                        OneHalfButton.IsVisible = true;
-                        oneHalfCode = "UPRS20-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        if (connectionType == 2)
+                        {
+                            OneHalfPlaceholder2.Text = "Valve model number: Consult Factory";
+                            OneHalfPlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            OneHalfPlaceholder2.Text = "Valve model number: UPRS20-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                            OneHalfPlaceholder2.IsVisible = true;
+                            OneHalfButton.IsVisible = true;
+                            oneHalfCode = "UPRS20-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        }
                         break;
                     }
                     else if (_requiredFlowRate < OneHalfArray[0, i])
                     {
                         OneHalfPlaceholder.Text = "20 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneHalfArray[1, i - 1] + " and " + OneHalfArray[1, i] + " PSI";
                         OneHalfPlaceholder.IsVisible = true;
-                        OneHalfPlaceholder2.Text = "Valve model number: UPRS20-SP" + connectionTypeCode + "-PF" + gaugeCode;
-                        OneHalfPlaceholder2.IsVisible = true;
-                        OneHalfButton.IsVisible = true;
-                        oneHalfCode = "UPRS20-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        if (connectionType == 2)
+                        {
+                            OneHalfPlaceholder2.Text = "Valve model number: Consult Factory";
+                            OneHalfPlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            OneHalfPlaceholder2.Text = "Valve model number: UPRS20-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                            OneHalfPlaceholder2.IsVisible = true;
+                            OneHalfButton.IsVisible = true;
+                            oneHalfCode = "UPRS20-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        }
                         break;
                     }
                 }
@@ -1265,20 +1361,37 @@ namespace SimplePressureRegulator.Views
                     {
                         ThreeFourthPlaceholder.Text = "25 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + ThreeFourthArray[1, i] + " PSI";
                         ThreeFourthPlaceholder.IsVisible = true;
-                        ThreeFourthPlaceholder2.Text = "Valve model number: UPRS25-SP" + connectionTypeCode + "-PF" + gaugeCode;
-                        ThreeFourthPlaceholder2.IsVisible = true;
-                        ThreeFourthButton.IsVisible = true;
-                        threeFourthCode = "UPRS25-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        if (connectionType == 2)
+                        {
+                            ThreeFourthPlaceholder2.Text = "Valve model number: Consult Factory";
+                            ThreeFourthPlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            ThreeFourthPlaceholder2.Text = "Valve model number: UPRS25-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                            ThreeFourthPlaceholder2.IsVisible = true;
+                            ThreeFourthButton.IsVisible = true;
+                            threeFourthCode = "UPRS25-SP" + connectionTypeCode + "-PF" + gaugeCode;
+
+                        }
                         break;
                     }
                     else if (_requiredFlowRate < ThreeFourthArray[0, i])
                     {
                         ThreeFourthPlaceholder.Text = "25 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + ThreeFourthArray[1, i - 1] + " and " + ThreeFourthArray[1, i] + " PSI";
                         ThreeFourthPlaceholder.IsVisible = true;
-                        ThreeFourthPlaceholder2.Text = "Valve model number: UPRS25-SP" + connectionTypeCode + "-PF" + gaugeCode;
-                        ThreeFourthPlaceholder2.IsVisible = true;
-                        ThreeFourthButton.IsVisible = true;
-                        threeFourthCode = "UPRS25-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        if (connectionType == 2)
+                        {
+                            ThreeFourthPlaceholder2.Text = "Valve model number: Consult Factory";
+                            ThreeFourthPlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            ThreeFourthPlaceholder2.Text = "Valve model number: UPRS25-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                            ThreeFourthPlaceholder2.IsVisible = true;
+                            ThreeFourthButton.IsVisible = true;
+                            threeFourthCode = "UPRS25-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        }
                         break;
                     }
                 }
@@ -1292,20 +1405,36 @@ namespace SimplePressureRegulator.Views
                     {
                         OneWholePlaceholder.Text = "32 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + OneWholeArray[1, i] + " PSI";
                         OneWholePlaceholder.IsVisible = true;
-                        OneWholePlaceholder2.Text = "Valve model number: UPRS32-SP" + connectionTypeCode + "-PF" + gaugeCode;
-                        OneWholePlaceholder2.IsVisible = true;
-                        OneWholeButton.IsVisible = true;
-                        oneWholeCode = "UPRS32-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        if (connectionType == 2)
+                        {
+                            OneWholePlaceholder2.Text = "Valve model number: Consult Factory";
+                            OneWholePlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            OneWholePlaceholder2.Text = "Valve model number: UPRS32-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                            OneWholePlaceholder2.IsVisible = true;
+                            OneWholeButton.IsVisible = true;
+                            oneWholeCode = "UPRS32-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        }
                         break;
                     }
                     else if (_requiredFlowRate < OneWholeArray[0, i])
                     {
                         OneWholePlaceholder.Text = "32 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneWholeArray[1, i - 1] + " and " + OneWholeArray[1, i] + " PSI";
                         OneWholePlaceholder.IsVisible = true;
-                        OneWholePlaceholder2.Text = "Valve model number: UPRS32-SP" + connectionTypeCode + "-PF" + gaugeCode;
-                        OneWholePlaceholder2.IsVisible = true;
-                        OneWholeButton.IsVisible = true;
-                        oneWholeCode = "UPRS32-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        if (connectionType == 2)
+                        {
+                            OneWholePlaceholder2.Text = "Valve model number: Consult Factory";
+                            OneWholePlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            OneWholePlaceholder2.Text = "Valve model number: UPRS32-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                            OneWholePlaceholder2.IsVisible = true;
+                            OneWholeButton.IsVisible = true;
+                            oneWholeCode = "UPRS32-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        }
                         break;
                     }
                 }
@@ -1319,20 +1448,36 @@ namespace SimplePressureRegulator.Views
                     {
                         OneOneHalfPlaceholder.Text = "50 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + OneOneHalfArray[1, i] + " PSI";
                         OneOneHalfPlaceholder.IsVisible = true;
-                        OneOneHalfPlaceholder2.Text = "Valve model number: UPRS50-SP" + connectionTypeCode + "-PF" + gaugeCode;
-                        OneOneHalfPlaceholder2.IsVisible = true;
-                        OneOneHalfButton.IsVisible = true;
-                        oneOneHalfCode = "UPRS50-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        if (connectionType == 2)
+                        {
+                            OneOneHalfPlaceholder2.Text = "Valve model number: Consult Factory";
+                            OneOneHalfPlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            OneOneHalfPlaceholder2.Text = "Valve model number: UPRS50-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                            OneOneHalfPlaceholder2.IsVisible = true;
+                            OneOneHalfButton.IsVisible = true;
+                            oneOneHalfCode = "UPRS50-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        }
                         break;
                     }
                     else if (_requiredFlowRate < OneOneHalfArray[0, i])
                     {
                         OneOneHalfPlaceholder.Text = "50 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + OneOneHalfArray[1, i - 1] + " and " + OneOneHalfArray[1, i] + " PSI";
                         OneOneHalfPlaceholder.IsVisible = true;
-                        OneOneHalfPlaceholder2.Text = "Valve model number: UPRS50-SP" + connectionTypeCode + "-PF" + gaugeCode;
-                        OneOneHalfPlaceholder2.IsVisible = true;
-                        OneOneHalfButton.IsVisible = true;
-                        oneOneHalfCode = "UPRS50-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        if (connectionType == 2)
+                        {
+                            OneOneHalfPlaceholder2.Text = "Valve model number: Consult Factory";
+                            OneOneHalfPlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            OneOneHalfPlaceholder2.Text = "Valve model number: UPRS50-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                            OneOneHalfPlaceholder2.IsVisible = true;
+                            OneOneHalfButton.IsVisible = true;
+                            oneOneHalfCode = "UPRS50-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        }
                         break;
                     }
                 }
@@ -1346,20 +1491,36 @@ namespace SimplePressureRegulator.Views
                     {
                         TwoWholePlaceholder.Text = "63 mm valve, pressure drop at " + _requiredFlowRate + " GPM: " + TwoWholeArray[1, i] + " PSI";
                         TwoWholePlaceholder.IsVisible = true;
-                        TwoWholePlaceholder2.Text = "Valve model number: UPRS63-SP" + connectionTypeCode + "-PF" + gaugeCode;
-                        TwoWholePlaceholder2.IsVisible = true;
-                        TwoWholeButton.IsVisible = true;
-                        twoWholeCode = "UPRS63-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        if (connectionType == 2)
+                        {
+                            TwoWholePlaceholder2.Text = "Valve model number: Consult Factory";
+                            TwoWholePlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            TwoWholePlaceholder2.Text = "Valve model number: UPRS63-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                            TwoWholePlaceholder2.IsVisible = true;
+                            TwoWholeButton.IsVisible = true;
+                            twoWholeCode = "UPRS63-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        }
                         break;
                     }
                     else if (_requiredFlowRate < TwoWholeArray[0, i])
                     {
                         TwoWholePlaceholder.Text = "63 mm valve, pressure drop at " + _requiredFlowRate + " GPM: between " + TwoWholeArray[1, i - 1] + " and " + TwoWholeArray[1, i] + " PSI";
                         TwoWholePlaceholder.IsVisible = true;
-                        TwoWholePlaceholder2.Text = "Valve model number: UPRS63-SP" + connectionTypeCode + "-PF" + gaugeCode;
-                        TwoWholePlaceholder2.IsVisible = true;
-                        TwoWholeButton.IsVisible = true;
-                        twoWholeCode = "UPRS63-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        if (connectionType == 2)
+                        {
+                            TwoWholePlaceholder2.Text = "Valve model number: Consult Factory";
+                            TwoWholePlaceholder2.IsVisible = true;
+                        }
+                        else
+                        {
+                            TwoWholePlaceholder2.Text = "Valve model number: UPRS63-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                            TwoWholePlaceholder2.IsVisible = true;
+                            TwoWholeButton.IsVisible = true;
+                            twoWholeCode = "UPRS63-SP" + connectionTypeCode + "-PF" + gaugeCode;
+                        }
                         break;
                     }
                 }

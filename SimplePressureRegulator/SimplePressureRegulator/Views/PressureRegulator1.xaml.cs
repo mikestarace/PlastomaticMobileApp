@@ -88,8 +88,11 @@ namespace SimplePressureRegulator.Views
                     sizePicker.Items.Add("2\"");
                     sizePicker.Items.Add("3\"");
                     break;
-                case 2: // PRHU
-                    
+                case 2: // Ultra-Pure Metal Ion-Free EPDM
+                    materialPicker.IsVisible = false;
+                    sealMaterialPicker.IsVisible = false;
+                    gaugePicker.IsVisible = false;
+                    connectionTypePicker.IsVisible = true;
                     break;
                 case 3: // Ultra-Pure Elastomer Free
                     materialPicker.IsVisible = false;
@@ -140,6 +143,11 @@ namespace SimplePressureRegulator.Views
         {
             Picker connectionTypePicker = (Picker)sender;
             connectionType = connectionTypePicker.SelectedIndex;
+
+            if (connectionType == 0 && valveApplication == 2 || connectionType == 1 && valveApplication == 2)
+            {
+
+            }
         }
 
         void AssignGauge(object sender, EventArgs args)
