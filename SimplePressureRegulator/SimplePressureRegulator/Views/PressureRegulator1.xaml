@@ -7,7 +7,7 @@
             <Label Text="" FontSize="5"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
             <Label Text="Pressure Regulator Tool" FontSize="Title" Padding="30,10,30,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
 
-            <Picker x:Name="applicationPicker" Title="Type of valve" SelectedIndexChanged="AssignApplication" Margin="10" FontSize="18" >
+            <Picker x:Name="applicationPicker" Title="Type of valve" SelectedIndexChanged="AssignApplication" Margin="10" FontSize="18" TitleColor="DimGray" TextColor="Black">
                 <Picker.Items>
                     <x:String>High Performance Pressure Regulator</x:String>
                     <x:String>Differential Pressure Regulator</x:String>
@@ -17,7 +17,7 @@
                 </Picker.Items>
             </Picker>
 
-            <Picker x:Name="connectionTypePicker" Title="Spigot Type" SelectedIndexChanged="AssignConnectionType" Margin="10" FontSize="18" IsVisible="False" >
+            <Picker x:Name="connectionTypePicker" Title="Spigot Type" SelectedIndexChanged="AssignConnectionType" Margin="10" FontSize="18" IsVisible="False" TitleColor="DimGray" TextColor="Black" >
                 <Picker.Items>
                     <x:String>Asahi</x:String>
                     <x:String>GF</x:String>
@@ -25,12 +25,12 @@
                 </Picker.Items>
             </Picker>
 
-            <Picker x:Name="sizePicker" Title="Pipe size" SelectedIndexChanged="AssignPipeSize" Margin="10" FontSize="18" IsVisible="False" IsEnabled="False"/>
+            <Picker x:Name="sizePicker" Title="Pipe size" SelectedIndexChanged="AssignPipeSize" Margin="10" FontSize="18" IsVisible="False" IsEnabled="False" TitleColor="DimGray" TextColor="Black"/>
 
-            <Picker x:Name="maxInletPicker" Title="Maximum system inlet pressure" IsEnabled="False" SelectedIndexChanged="AssignMaxInlet" Margin="10" FontSize="18" IsVisible="False"/>
+            <Picker x:Name="maxInletPicker" Title="Maximum system inlet pressure" IsEnabled="False" SelectedIndexChanged="AssignMaxInlet" Margin="10" FontSize="18" IsVisible="False" TitleColor="DimGray" TextColor="Black"/>
 
 
-            <Picker x:Name="DesiredSetPressurePicker" Grid.Row="1" Grid.ColumnSpan="3" Title="Desired Set Pressure" SelectedIndexChanged="AssignSetPressure" Margin="10" FontSize="18" IsVisible="False" >
+            <Picker x:Name="DesiredSetPressurePicker" Grid.Row="1" Grid.ColumnSpan="3" Title="Desired Set Pressure" SelectedIndexChanged="AssignSetPressure" Margin="10" FontSize="18" IsVisible="False" TitleColor="DimGray" TextColor="Black" >
                 <Picker.Items>
                     <x:String>05 PSI</x:String>
                     <x:String>10 PSI</x:String>
@@ -43,17 +43,17 @@
                 </Picker.Items>
             </Picker>
 
-            <Picker x:Name="materialPicker" Title="Body Material" SelectedIndexChanged="AssignMaterial" Margin="10" FontSize="18" IsVisible="False" />
+            <Picker x:Name="materialPicker" Title="Body Material" SelectedIndexChanged="AssignMaterial" Margin="10" FontSize="18" IsVisible="False" TitleColor="DimGray" TextColor="Black"/>
 
 
-            <Picker x:Name="sealMaterialPicker" Title="Seal Material" SelectedIndexChanged="AssignSealMaterial" Margin="10" FontSize="18" IsVisible="False" >
+            <Picker x:Name="sealMaterialPicker" Title="Seal Material" SelectedIndexChanged="AssignSealMaterial" Margin="10" FontSize="18" IsVisible="False" TitleColor="DimGray" TextColor="Black">
                 <Picker.Items>
                     <x:String>Viton</x:String>
                     <x:String>EPDM</x:String>
                 </Picker.Items>
             </Picker>
 
-            <Picker x:Name="gaugePicker" Title="Gauge" SelectedIndexChanged="AssignGauge" Margin="10" FontSize="18" IsVisible="False" >
+            <Picker x:Name="gaugePicker" Title="Gauge" SelectedIndexChanged="AssignGauge" Margin="10" FontSize="18" IsVisible="False" TitleColor="DimGray" TextColor="Black" >
                 <Picker.Items>
                     <x:String>No Gauge</x:String>
                     <x:String>Left-to-Right Flow</x:String>
@@ -69,9 +69,9 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Text="Required flow rate: " FontSize="18" Margin="15,10,0,0"/>
-                <Entry x:Name="requiredFlowRate" Grid.Row="0" Grid.Column="1"/>
-                <Label Grid.Row="0" Grid.Column="2" Text="GPM" FontSize="18" Margin="0,10,0,0"/>
+                <Label Grid.Row="0" Grid.Column="0" Text="Required flow rate: " FontSize="18" Margin="15,10,0,0" TextColor="DimGray"/>
+                <Entry x:Name="requiredFlowRate" Grid.Row="0" Grid.Column="1" TextColor="Black" />
+                <Label Grid.Row="0" Grid.Column="2" Text="GPM" FontSize="18" Margin="0,10,0,0" TextColor="DimGray"/>
             </Grid>
 
             <Button Text="Calculate" Clicked="calculateCheck" BackgroundColor="#2196F3" TextColor="White" Margin="10,10,10,0" x:Name="CalculateButton" IsVisible="False"/>
