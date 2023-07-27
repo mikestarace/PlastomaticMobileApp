@@ -95,11 +95,19 @@ namespace SimplePressureRegulator.Views
                     DesiredSetPressureLabel.Text = "30";
                     desiredSetPressure = 30.0;
                     break;
-                case 6: // 40 PSI
+                case 6: // 35 PSI
+                    DesiredSetPressureLabel.Text = "35";
+                    desiredSetPressure = 35.0;
+                    break;
+                case 7: // 40 PSI
                     DesiredSetPressureLabel.Text = "40";
                     desiredSetPressure = 40.0;
                     break;
-                case 7: // 50 PSI
+                case 8: // 45 PSI
+                    DesiredSetPressureLabel.Text = "45";
+                    desiredSetPressure = 45.0;
+                    break;
+                case 9: // 50 PSI
                     DesiredSetPressureLabel.Text = "50";
                     desiredSetPressure = 50.0;
                     break;
@@ -227,7 +235,7 @@ namespace SimplePressureRegulator.Views
                     break;
             }
             // CREATING THE 3D ARRAY
-            double[,] arrayGPM = new double[14, 8];
+            double[,] arrayGPM = new double[14, 5];
             arrayGPM[0, 0]
                 = 1.0;
             arrayGPM[1, 0]
@@ -368,90 +376,6 @@ namespace SimplePressureRegulator.Views
                 = 100.0;
             arrayGPM[13, 4]
                 = 200.0;
-            arrayGPM[0, 5]
-                = 3.5;
-            arrayGPM[1, 5]
-                = 5.0;
-            arrayGPM[2, 5]
-                = 7.0;
-            arrayGPM[3, 5]
-                = 10.0;
-            arrayGPM[4, 5]
-                = 18.0;
-            arrayGPM[5, 5]
-                = 35.0;
-            arrayGPM[6, 5]
-                = 25.0;
-            arrayGPM[7, 5]
-                = 50.0;
-            arrayGPM[8, 5]
-                = 36.0;
-            arrayGPM[9, 5]
-                = 70.0;
-            arrayGPM[10, 5]
-                = 50.0;
-            arrayGPM[11, 5]
-                = 100.0;
-            arrayGPM[12, 5]
-                = 100.0;
-            arrayGPM[13, 5]
-                = 200.0;
-            arrayGPM[0, 6]
-                = 3.5;
-            arrayGPM[1, 6]
-                = 5.0;
-            arrayGPM[2, 6]
-                = 7.0;
-            arrayGPM[3, 6]
-                = 10.0;
-            arrayGPM[4, 6]
-                = 18.0;
-            arrayGPM[5, 6]
-                = 35.0;
-            arrayGPM[6, 6]
-                = 25.0;
-            arrayGPM[7, 6]
-                = 50.0;
-            arrayGPM[8, 6]
-                = 36.0;
-            arrayGPM[9, 6]
-                = 70.0;
-            arrayGPM[10, 6]
-                = 50.0;
-            arrayGPM[11, 6]
-                = 100.0;
-            arrayGPM[12, 6]
-                = 100.0;
-            arrayGPM[13, 6]
-                = 200.0;
-            arrayGPM[0, 7]
-                = 3.5;
-            arrayGPM[1, 7]
-                = 5.0;
-            arrayGPM[2, 7]
-                = 7.0;
-            arrayGPM[3, 7]
-                = 10.0;
-            arrayGPM[4, 7]
-                = 18.0;
-            arrayGPM[5, 7]
-                = 35.0;
-            arrayGPM[6, 7]
-                = 25.0;
-            arrayGPM[7, 7]
-                = 50.0;
-            arrayGPM[8, 7]
-                = 36.0;
-            arrayGPM[9, 7]
-                = 70.0;
-            arrayGPM[10, 7]
-                = 50.0;
-            arrayGPM[11, 7]
-                = 100.0;
-            arrayGPM[12, 7]
-                = 100.0;
-            arrayGPM[13, 7]
-                = 200.0;
 
             // DETERMINING X VALUE OF ARRAY
             int? arrayXvalue = null;
@@ -514,6 +438,11 @@ namespace SimplePressureRegulator.Views
 
             // DETERMINING ARRAY Y VALUE
             int arrayYvalue = _desiredSetPressure.Value;
+
+            if (arrayYvalue > 4)
+            {
+                arrayYvalue = 4;
+            }
 
             // GETTING THE MAX FLOW RATE AND ATTACHING IT TO THE LABEL
             double maxFlowRate = arrayGPM[arrayXvalue.Value, arrayYvalue];
