@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:SimplePressureRegulator.Controls"
              x:Class="SimplePressureRegulator.Views.PressureRegulator1">
     <ContentPage.Content>
         <ScrollView HeightRequest="1000" Margin="0,0,0,10">
@@ -9,31 +9,31 @@
                 <Label Text="Pressure Regulator Tool" FontSize="Title" Padding="30,10,30,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
                 <Label Text="Select your application parameters" HorizontalOptions="Center" FontSize="16" TextColor="Black"/>
 
-                <Picker x:Name="applicationPicker" Title="Type of valve" SelectedIndexChanged="AssignApplication" Margin="10">
-                    <Picker.Items>
+                <controls:CustomPicker x:Name="applicationPicker" Title="Type of valve" SelectedIndexChanged="AssignApplication" Margin="10" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                    <controls:CustomPicker.Items>
                         <x:String>High Performance Pressure Regulator</x:String>
                         <x:String>Differential Pressure Regulator</x:String>
                         <x:String>Ultra-Pure Metal Ion-Free EPDM</x:String>
                         <x:String>Ultra-Pure Elastomer Free</x:String>
                         <x:String>Ultra-Pure Shutoff Design</x:String>
-                    </Picker.Items>
-                </Picker>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
 
-                <Picker x:Name="connectionTypePicker" Title="Spigot Type" SelectedIndexChanged="AssignConnectionType" Margin="10" FontSize="18" IsVisible="False">
-                    <Picker.Items>
+                <controls:CustomPicker x:Name="connectionTypePicker" Title="Spigot Type" SelectedIndexChanged="AssignConnectionType" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                    <controls:CustomPicker.Items>
                         <x:String>Asahi</x:String>
                         <x:String>GF</x:String>
                         <x:String>IPS</x:String>
-                    </Picker.Items>
-                </Picker>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
 
-                <Picker x:Name="sizePicker" Title="Pipe size" SelectedIndexChanged="AssignPipeSize" Margin="10" FontSize="18" IsVisible="False" IsEnabled="False"/>
+                <controls:CustomPicker x:Name="sizePicker" Title="Pipe size" SelectedIndexChanged="AssignPipeSize" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE"/>
 
-                <Picker x:Name="maxInletPicker" Title="Maximum system inlet pressure" IsEnabled="False" SelectedIndexChanged="AssignMaxInlet" Margin="10" FontSize="18" IsVisible="False"/>
+                <controls:CustomPicker x:Name="maxInletPicker" Title="Maximum system inlet pressure" IsEnabled="False" SelectedIndexChanged="AssignMaxInlet" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE"/>
 
 
-                <Picker x:Name="DesiredSetPressurePicker" Grid.Row="1" Grid.ColumnSpan="3" Title="Desired Set Pressure" SelectedIndexChanged="AssignSetPressure" Margin="10" FontSize="18" IsVisible="False">
-                    <Picker.Items>
+                <controls:CustomPicker x:Name="DesiredSetPressurePicker" Grid.Row="1" Grid.ColumnSpan="3" Title="Desired Set Pressure" SelectedIndexChanged="AssignSetPressure" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                    <controls:CustomPicker.Items>
                         <x:String>05 PSI</x:String>
                         <x:String>10 PSI</x:String>
                         <x:String>15 PSI</x:String>
@@ -44,26 +44,26 @@
                         <x:String>40 PSI</x:String>
                         <x:String>45 PSI</x:String>
                         <x:String>50 PSI</x:String>
-                    </Picker.Items>
-                </Picker>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
 
-                <Picker x:Name="materialPicker" Title="Body Material" SelectedIndexChanged="AssignMaterial" Margin="10" FontSize="18" IsVisible="False"/>
+                <controls:CustomPicker x:Name="materialPicker" Title="Body Material" SelectedIndexChanged="AssignMaterial" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE"/>
 
 
-                <Picker x:Name="sealMaterialPicker" Title="Seal Material" SelectedIndexChanged="AssignSealMaterial" Margin="10" FontSize="18" IsVisible="False">
-                    <Picker.Items>
+                <controls:CustomPicker x:Name="sealMaterialPicker" Title="Seal Material" SelectedIndexChanged="AssignSealMaterial" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                    <controls:CustomPicker.Items>
                         <x:String>Viton</x:String>
                         <x:String>EPDM</x:String>
-                    </Picker.Items>
-                </Picker>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
 
-                <Picker x:Name="gaugePicker" Title="Gauge" SelectedIndexChanged="AssignGauge" Margin="10" FontSize="18" IsVisible="False">
-                    <Picker.Items>
+                <controls:CustomPicker x:Name="gaugePicker" Title="Gauge" SelectedIndexChanged="AssignGauge" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                    <controls:CustomPicker.Items>
                         <x:String>No Gauge</x:String>
                         <x:String>Left-to-Right Flow</x:String>
                         <x:String>Right-to-Left Flow</x:String>
-                    </Picker.Items>
-                </Picker>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
 
                 <Grid x:Name="FlowRateGrid" IsVisible="False">
                     <Grid.RowDefinitions>

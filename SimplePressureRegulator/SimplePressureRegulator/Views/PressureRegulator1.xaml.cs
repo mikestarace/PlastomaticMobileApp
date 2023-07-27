@@ -59,7 +59,6 @@ namespace SimplePressureRegulator.Views
                     connectionTypePicker.IsVisible = false;
                     gaugePicker.IsVisible = false;
                     materialPicker.IsVisible = true;
-                    sizePicker.IsEnabled = true;
                     materialPicker.Items.Add("PVC");
                     materialPicker.Items.Add("CPVC");
                     materialPicker.Items.Add("Polypro");
@@ -78,7 +77,6 @@ namespace SimplePressureRegulator.Views
                     gaugePicker.IsVisible = false;
                     connectionTypePicker.IsVisible = false;
                     materialPicker.IsVisible = true;
-                    sizePicker.IsEnabled = true;
                     materialPicker.Items.Add("PVC");
                     materialPicker.Items.Add("Polypro");
                     sealMaterialPicker.IsVisible = true;
@@ -100,7 +98,6 @@ namespace SimplePressureRegulator.Views
                     materialPicker.IsVisible = false;
                     sealMaterialPicker.IsVisible = false;
                     gaugePicker.IsVisible = false;
-                    sizePicker.IsEnabled = true;
                     connectionTypePicker.IsVisible = true;
                     sizePicker.Items.Add("1/4\"");
                     sizePicker.Items.Add("20 mm");
