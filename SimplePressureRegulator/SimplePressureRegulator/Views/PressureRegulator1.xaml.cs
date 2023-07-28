@@ -12,6 +12,7 @@ namespace SimplePressureRegulator.Views
         public PressureRegulator1()
         {
             InitializeComponent();
+            BindingContext = this;
         }
 
         int? valveApplication;
@@ -240,6 +241,28 @@ namespace SimplePressureRegulator.Views
 
 
         int _requiredFlowRate;
+
+        string flowRate = "";
+        public string FlowRate
+        {
+            get => flowRate;
+            set
+            {
+                if (value == null || value == "")
+                {
+                    requiredFlowRateLabel1.TextColor = Color.FromHex("#0000EE");
+                    requiredFlowRateLabel2.TextColor = Color.FromHex("#0000EE");
+                    return;
+                }
+                else
+                {
+                    flowRate = value;
+                    requiredFlowRateLabel1.TextColor = Color.Black;
+                    requiredFlowRateLabel2.TextColor = Color.Black;
+                    OnPropertyChanged(nameof(FlowRate));
+                }              
+            }
+        }
 
         async void calculateCheck(object sender, EventArgs args)
         {
