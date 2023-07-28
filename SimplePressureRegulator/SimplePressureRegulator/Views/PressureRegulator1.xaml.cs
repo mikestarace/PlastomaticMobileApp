@@ -12,6 +12,7 @@ namespace SimplePressureRegulator.Views
         public PressureRegulator1()
         {
             InitializeComponent();
+            BindingContext = this;
         }
 
         int? valveApplication;
@@ -59,7 +60,6 @@ namespace SimplePressureRegulator.Views
                     connectionTypePicker.IsVisible = false;
                     gaugePicker.IsVisible = false;
                     materialPicker.IsVisible = true;
-                    sizePicker.IsEnabled = true;
                     materialPicker.Items.Add("PVC");
                     materialPicker.Items.Add("CPVC");
                     materialPicker.Items.Add("Polypro");
@@ -78,7 +78,6 @@ namespace SimplePressureRegulator.Views
                     gaugePicker.IsVisible = false;
                     connectionTypePicker.IsVisible = false;
                     materialPicker.IsVisible = true;
-                    sizePicker.IsEnabled = true;
                     materialPicker.Items.Add("PVC");
                     materialPicker.Items.Add("Polypro");
                     sealMaterialPicker.IsVisible = true;
@@ -100,7 +99,6 @@ namespace SimplePressureRegulator.Views
                     materialPicker.IsVisible = false;
                     sealMaterialPicker.IsVisible = false;
                     gaugePicker.IsVisible = false;
-                    sizePicker.IsEnabled = true;
                     connectionTypePicker.IsVisible = true;
                     sizePicker.Items.Add("1/4\"");
                     sizePicker.Items.Add("20 mm");
@@ -243,6 +241,28 @@ namespace SimplePressureRegulator.Views
 
 
         int _requiredFlowRate;
+
+        string flowRate = "";
+        public string FlowRate
+        {
+            get => flowRate;
+            set
+            {
+                if (value == null || value == "")
+                {
+                    requiredFlowRateLabel1.TextColor = Color.FromHex("#0000EE");
+                    requiredFlowRateLabel2.TextColor = Color.FromHex("#0000EE");
+                    return;
+                }
+                else
+                {
+                    flowRate = value;
+                    requiredFlowRateLabel1.TextColor = Color.Black;
+                    requiredFlowRateLabel2.TextColor = Color.Black;
+                    OnPropertyChanged(nameof(FlowRate));
+                }              
+            }
+        }
 
         async void calculateCheck(object sender, EventArgs args)
         {
