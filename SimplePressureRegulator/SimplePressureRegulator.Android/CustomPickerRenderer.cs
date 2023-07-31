@@ -125,7 +125,7 @@ namespace SimplePressureRegulator.Droid
                 }
                 TextView textView = convertView.FindViewById<TextView>(Resource.Id.textView1); // finds textView1 inside listview_item
                 textView.Text = items[position];
-                textView.SetTextSize(Android.Util.ComplexUnitType.Sp, 20);
+                textView.SetTextSize(Android.Util.ComplexUnitType.Sp, 30);
                 textView.SetPadding(5, 0, 5, 0);
                 return convertView;
             }
