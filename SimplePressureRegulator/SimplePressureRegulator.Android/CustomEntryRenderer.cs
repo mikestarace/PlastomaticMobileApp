@@ -39,11 +39,6 @@ namespace SimplePressureRegulator.Droid
             border.Paint.Color = Android.Graphics.Color.Gray;
             border.SetPadding(10, 10, 10, 10);
             border.Paint.SetStyle(Paint.Style.Stroke);
-
-            // Drawable[] layers = { border, GetDrawable(imagePath) };
-            // LayerDrawable layerDrawable = new LayerDrawable(layers);
-            // layerDrawable.SetLayerInset(0, 0, 0, 0, 0);
-
             return border;
         }
     }

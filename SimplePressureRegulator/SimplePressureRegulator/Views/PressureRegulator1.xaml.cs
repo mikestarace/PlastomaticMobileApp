@@ -42,6 +42,7 @@ namespace SimplePressureRegulator.Views
             connectionType = null;
             gaugePicker.SelectedItem = null;
             gaugeType = null;
+            sizePicker.IsEnabled = false;
             sizePicker.Items.Clear();
             valveSize = null;
             sizePicker.IsVisible = true;
@@ -66,6 +67,7 @@ namespace SimplePressureRegulator.Views
                     materialPicker.Items.Add("PTFE");
                     materialPicker.Items.Add("PVDF");
                     sealMaterialPicker.IsVisible = true;
+                    sizePicker.IsEnabled = true;
                     sizePicker.Items.Add("1/4\"");
                     sizePicker.Items.Add("1/2\"");
                     sizePicker.Items.Add("3/4\"");
@@ -81,6 +83,7 @@ namespace SimplePressureRegulator.Views
                     materialPicker.Items.Add("PVC");
                     materialPicker.Items.Add("Polypro");
                     sealMaterialPicker.IsVisible = true;
+                    sizePicker.IsEnabled = true;
                     sizePicker.Items.Add("1/4\"");
                     sizePicker.Items.Add("1/2\"");
                     sizePicker.Items.Add("3/4\"");
@@ -100,6 +103,7 @@ namespace SimplePressureRegulator.Views
                     sealMaterialPicker.IsVisible = false;
                     gaugePicker.IsVisible = false;
                     connectionTypePicker.IsVisible = true;
+                    sizePicker.IsEnabled = true;
                     sizePicker.Items.Add("1/4\"");
                     sizePicker.Items.Add("20 mm");
                     sizePicker.Items.Add("25 mm");
