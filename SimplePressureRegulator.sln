@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePressureRegulator.And
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePressureRegulator.iOS", "SimplePressureRegulator\SimplePressureRegulator.iOS\SimplePressureRegulator.iOS.csproj", "{F8B3E157-B593-4DE9-8196-E7937ED317A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplePressureRegulator", "SimplePressureRegulator\SimplePressureRegulator\SimplePressureRegulator.csproj", "{59C1A720-E260-4484-9E22-EDEE7DB5D0D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimplePressureRegulator", "SimplePressureRegulator\SimplePressureRegulator\SimplePressureRegulator.csproj", "{59C1A720-E260-4484-9E22-EDEE7DB5D0D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

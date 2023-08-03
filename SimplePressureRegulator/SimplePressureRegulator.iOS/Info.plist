@@ -21,11 +21,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>14.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>SimplePressureRegulator</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.companyname.SimplePressureRegulator</string>
+	<string>Plastomatic</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
@@ -38,5 +36,7 @@
 	<string>Light</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.Plastomatic.PlastomaticApp</string>
 </dict>
 </plist>
