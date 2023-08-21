@@ -19,20 +19,14 @@
                     </controls:CustomPicker.Items>
                 </controls:CustomPicker>
 
-                <controls:CustomPicker x:Name="connectionTypePicker" Title="Spigot Type" SelectedIndexChanged="AssignConnectionType" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE">
-                    <controls:CustomPicker.Items>
-                        <x:String>Asahi</x:String>
-                        <x:String>GF</x:String>
-                        <x:String>IPS</x:String>
-                    </controls:CustomPicker.Items>
-                </controls:CustomPicker>
+                <controls:CustomPicker x:Name="spigotTypePicker" Title="Spigot Type" SelectedIndexChanged="AssignSpigotType" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE"/>
 
                 <controls:CustomPicker x:Name="sizePicker" Title="Pipe size" SelectedIndexChanged="AssignPipeSize" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE"/>
 
                 <controls:CustomPicker x:Name="maxInletPicker" Title="Maximum system inlet pressure" IsEnabled="False" SelectedIndexChanged="AssignMaxInlet" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE"/>
 
 
-                <controls:CustomPicker x:Name="DesiredSetPressurePicker" Grid.Row="1" Grid.ColumnSpan="3" Title="Desired Set Pressure" SelectedIndexChanged="AssignSetPressure" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                <controls:CustomPicker x:Name="desiredSetPressurePicker" Grid.Row="1" Grid.ColumnSpan="3" Title="Desired Set Pressure" SelectedIndexChanged="AssignSetPressure" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE">
                     <controls:CustomPicker.Items>
                         <x:String>05 PSI</x:String>
                         <x:String>10 PSI</x:String>
@@ -74,7 +68,7 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" x:Name="requiredFlowRateLabel1" Grid.Column="0" Text="Required flow rate: " FontSize="18" Margin="15,10,0,0" TextColor="#0000EE"/>
-                    <controls:CustomEntry x:Name="requiredFlowRate" Grid.Row="0" Grid.Column="1" TextColor="Black" Text="{Binding FlowRate}"/>
+                    <controls:CustomEntry x:Name="requiredFlowRateEntry" Grid.Row="0" Grid.Column="1" TextColor="Black" Text="{Binding FlowRate}"/>
                     <Label Grid.Row="0" x:Name="requiredFlowRateLabel2" Grid.Column="2" Text="GPM" FontSize="18" Margin="0,10,0,0" TextColor="#0000EE"/>
                 </Grid>
 
