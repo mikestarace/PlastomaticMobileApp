@@ -16,32 +16,44 @@ namespace SimplePressureRegulator.Views
         }
 
         int? valveApplication;
-        int? valveBodyMaterial;
-        int? valveSealMaterial;
-        int? connectionType;
-        int? gaugeType;
+        int? desiredSetPressure;
+        int? bodyMaterial;
+        int? sealMaterial;
+        int? spigotType;
+        int? gauge;
         int? valveSize;
-        int? _desiredSetPressure;
         int? maxInletPressure;
+        int requiredFlowRate;
+        // Declaring variables for selected indeces and required flow rate
 
+        string _valveApplication;
+        string _desiredSetPressure;
+        string _bodyMaterial;
+        string _sealMaterial;
+        string _spigotType;
+        string _gauge;
+        string _valveSize;
+        string _maxInletPressure;
+        // Declaring variables for getting picker texts
+
+        // START: Picker Methods
         void AssignApplication(object sender, EventArgs args)
         {
             Picker applicationPicker = (Picker)sender;
             valveApplication = applicationPicker.SelectedIndex;
-            // Assigns the application chosen by the user in the dropdown menu. Index 0 is standard pressure regulator, etc...
 
-            DesiredSetPressurePicker.SelectedItem = null;
-            _desiredSetPressure = null;
-            DesiredSetPressurePicker.IsVisible = true;
+            desiredSetPressurePicker.SelectedItem = null;
+            desiredSetPressure = null;
+            desiredSetPressurePicker.IsVisible = true;
             materialPicker.Items.Clear();
-            valveBodyMaterial = null;
+            bodyMaterial = null;
             materialPicker.IsVisible = true;
             sealMaterialPicker.SelectedItem = null;
-            valveSealMaterial = null;
-            connectionTypePicker.SelectedItem = null;
-            connectionType = null;
+            sealMaterial = null;
+            spigotTypePicker.Items.Clear();
+            spigotType = null;
             gaugePicker.SelectedItem = null;
-            gaugeType = null;
+            gauge = null;
             sizePicker.IsEnabled = false;
             sizePicker.Items.Clear();
             valveSize = null;
@@ -52,13 +64,11 @@ namespace SimplePressureRegulator.Views
             FlowRateGrid.IsVisible = true;
             maxInletPicker.IsEnabled = false;
             CalculateButton.IsVisible = true;
-            // Clears all previously selected inputs when the user makes a selection
 
-            // Showing the right fields based on valve application
             switch (valveApplication)
             {
                 case 0: // High Performance Pressure Regulator
-                    connectionTypePicker.IsVisible = false;
+                    spigotTypePicker.IsVisible = false;
                     gaugePicker.IsVisible = false;
                     materialPicker.IsVisible = true;
                     materialPicker.Items.Add("PVC");
@@ -78,7 +88,7 @@ namespace SimplePressureRegulator.Views
                     break;
                 case 1: // Differential Pressure Regulator
                     gaugePicker.IsVisible = false;
-                    connectionTypePicker.IsVisible = false;
+                    spigotTypePicker.IsVisible = false;
                     materialPicker.IsVisible = true;
                     materialPicker.Items.Add("PVC");
                     materialPicker.Items.Add("Polypro");
@@ -96,13 +106,18 @@ namespace SimplePressureRegulator.Views
                     materialPicker.IsVisible = false;
                     sealMaterialPicker.IsVisible = false;
                     gaugePicker.IsVisible = false;
-                    connectionTypePicker.IsVisible = true;
+                    spigotTypePicker.IsVisible = true;
+                    spigotTypePicker.Items.Add("Asahi");
+                    spigotTypePicker.Items.Add("GF");
+                    spigotTypePicker.Items.Add("IPS");
                     break;
                 case 3: // Ultra-Pure Elastomer Free
                     materialPicker.IsVisible = false;
                     sealMaterialPicker.IsVisible = false;
                     gaugePicker.IsVisible = false;
-                    connectionTypePicker.IsVisible = true;
+                    spigotTypePicker.IsVisible = true;
+                    spigotTypePicker.Items.Add("Asahi");
+                    spigotTypePicker.Items.Add("GF");
                     sizePicker.IsEnabled = true;
                     sizePicker.Items.Add("1/4\"");
                     sizePicker.Items.Add("20 mm");
@@ -114,7 +129,9 @@ namespace SimplePressureRegulator.Views
                 case 4: // Ultra-Pure Shutoff Design
                     materialPicker.IsVisible = false;
                     sealMaterialPicker.IsVisible = false;
-                    connectionTypePicker.IsVisible = true;
+                    spigotTypePicker.IsVisible = true;
+                    spigotTypePicker.Items.Add("Asahi");
+                    spigotTypePicker.Items.Add("GF");
                     gaugePicker.IsVisible = true;
                     sizePicker.IsEnabled = true;
                     sizePicker.Items.Add("20 mm");
@@ -125,34 +142,33 @@ namespace SimplePressureRegulator.Views
                     break;
             }
         }
-
-        // The following code will grab what the user selects in the dropdown menus and store the correct index as a variable
         void AssignSetPressure(object sender, EventArgs args)
         {
-            Picker DesiredSetPressurePicker = (Picker)sender;
-            _desiredSetPressure = DesiredSetPressurePicker.SelectedIndex;
+            Picker desiredSetPressurePicker = (Picker)sender;
+            desiredSetPressure = desiredSetPressurePicker.SelectedIndex;
         }
 
         void AssignMaterial(object sender, EventArgs args)
         {
             Picker materialPicker = (Picker)sender;
-            valveBodyMaterial = materialPicker.SelectedIndex;
+            bodyMaterial = materialPicker.SelectedIndex;
         }
 
         void AssignSealMaterial(object sender, EventArgs args)
         {
             Picker sealMaterialPicker = (Picker)sender;
-            valveSealMaterial = sealMaterialPicker.SelectedIndex;
+            sealMaterial = sealMaterialPicker.SelectedIndex;
         }
 
-        void AssignConnectionType(object sender, EventArgs args)
+        void AssignSpigotType(object sender, EventArgs args)
         {
-            Picker connectionTypePicker = (Picker)sender;
-            connectionType = connectionTypePicker.SelectedIndex;
+            Picker spigotTypePicker = (Picker)sender;
+            spigotType = spigotTypePicker.SelectedIndex;
 
-            if (connectionType == 0 && valveApplication == 2 || connectionType == 1 && valveApplication == 2)
+            if (spigotType == 0 && valveApplication == 2 || spigotType == 1 && valveApplication == 2)
             {
                 sizePicker.Items.Clear();
+                valveSize = null;
                 sizePicker.IsEnabled = true;
                 sizePicker.Items.Add("20 mm");
                 sizePicker.Items.Add("25 mm");
@@ -162,9 +178,10 @@ namespace SimplePressureRegulator.Views
                 sizePicker.Items.Add("63 mm");
                 sizePicker.Items.Add("90 mm");
             }
-            else if (connectionType == 2 && valveApplication == 2)
+            else if (spigotType == 2 && valveApplication == 2)
             {
                 sizePicker.Items.Clear();
+                valveSize = null;
                 sizePicker.IsEnabled = true;
                 sizePicker.Items.Add("1/2\"");
                 sizePicker.Items.Add("3/4\"");
@@ -179,13 +196,14 @@ namespace SimplePressureRegulator.Views
         void AssignGauge(object sender, EventArgs args)
         {
             Picker gaugePicker = (Picker)sender;
-            gaugeType = gaugePicker.SelectedIndex;
+            gauge = gaugePicker.SelectedIndex;
         }
 
         void AssignPipeSize(object sender, EventArgs args)
         {
             Picker sizePicker = (Picker)sender;
             valveSize = sizePicker.SelectedIndex;
+
             maxInletPicker.Items.Clear();
             maxInletPressure = null;
             maxInletPicker.IsEnabled = true;
@@ -224,28 +242,18 @@ namespace SimplePressureRegulator.Views
                     maxInletPicker.Items.Add("25 & Up");
                     break;
             }
-
-            // Making sure that we send the right index number for calculating Max Flow Rate.
-            if (valveApplication == 2 && valveSize < 4)
-            {
-                valveSize += 1; // We add 1 to account for 1/4" pipe size not being in the selection. Selection starts at 1/2"
-            }
-            if (valveApplication == 4)
-            {
-                valveSize += 1; // We add 1 to account for 1/4" pipe size not being in the selection. Selection starts at 20mm AKA 1/2"
-            }
         }
 
         void AssignMaxInlet(object sender, EventArgs args)
         {
             Picker maxInletPicker = (Picker)sender;
             maxInletPressure = maxInletPicker.SelectedIndex;
-
         }
+        // END: Picker Methods
 
 
-        int _requiredFlowRate;
 
+        // START: Flow rate entry
         string flowRate = "";
         public string FlowRate
         {
@@ -267,16 +275,21 @@ namespace SimplePressureRegulator.Views
                 }              
             }
         }
+        // END: Flow rate entry
 
         async void calculateCheck(object sender, EventArgs args)
         {
-            string __requiredFlowRate = requiredFlowRate.Text;
-
-            try
-            {
-                _requiredFlowRate = Int32.Parse(__requiredFlowRate);
-            }
-            catch (Exception e)
+            string _requiredFlowRate = requiredFlowRateEntry.Text;            
+            _valveApplication = applicationPicker.Items[applicationPicker.SelectedIndex];
+            _desiredSetPressure = desiredSetPressurePicker.Items[desiredSetPressurePicker.SelectedIndex];
+            try { _bodyMaterial = materialPicker.Items[materialPicker.SelectedIndex]; } catch { }
+            try { _sealMaterial = sealMaterialPicker.Items[materialPicker.SelectedIndex]; } catch { }
+            try { _spigotType = spigotTypePicker.Items[spigotTypePicker.SelectedIndex]; } catch{ }
+            try { _gauge = gaugePicker.Items[gaugePicker.SelectedIndex]; } catch { }
+            _valveSize = sizePicker.Items[sizePicker.SelectedIndex];
+            _maxInletPressure = maxInletPicker.Items[maxInletPicker.SelectedIndex];
+            try { requiredFlowRate = Int32.Parse(_requiredFlowRate); }
+            catch
             {
                 await DisplayAlert("Error", "Invalid input", "Okay");
                 return;
@@ -285,9 +298,9 @@ namespace SimplePressureRegulator.Views
             switch (valveApplication)
             {
                 case 0: // High Performance Pressure Regulator
-                    if (_desiredSetPressure != null && valveBodyMaterial != null && valveSealMaterial != null && valveSize != null && maxInletPressure != null)
+                    if (desiredSetPressure != null && bodyMaterial != null && sealMaterial != null && valveSize != null && maxInletPressure != null)
                     {
-                        await Navigation.PushAsync(new PressureRegulator2(maxInletPressure, _desiredSetPressure, _requiredFlowRate, valveApplication, valveBodyMaterial, valveSealMaterial, connectionType, gaugeType, valveSize));
+                        await Navigation.PushAsync(new PressureRegulator2(_valveApplication, _desiredSetPressure, _bodyMaterial, _sealMaterial, _spigotType, _gauge, _valveSize, _maxInletPressure, desiredSetPressure, valveSize, maxInletPressure, requiredFlowRate));
                     }
                     else
                     {
@@ -295,9 +308,9 @@ namespace SimplePressureRegulator.Views
                     }
                     break;
                 case 1: // Differential Pressure Regulator
-                    if (_desiredSetPressure != null && valveBodyMaterial != null && valveSealMaterial != null && valveSize != null && maxInletPressure != null)
+                    if (desiredSetPressure != null && bodyMaterial != null && sealMaterial != null && valveSize != null && maxInletPressure != null)
                     {
-                        await Navigation.PushAsync(new PressureRegulator2(maxInletPressure, _desiredSetPressure, _requiredFlowRate, valveApplication, valveBodyMaterial, valveSealMaterial, connectionType, gaugeType, valveSize));
+                        await Navigation.PushAsync(new PressureRegulator2(_valveApplication, _desiredSetPressure, _bodyMaterial, _sealMaterial, _spigotType, _gauge, _valveSize, _maxInletPressure, desiredSetPressure, valveSize, maxInletPressure, requiredFlowRate));
                     }
                     else
                     {
@@ -305,9 +318,9 @@ namespace SimplePressureRegulator.Views
                     }
                     break;
                 case 2: // PRHU
-                    if (_desiredSetPressure != null && connectionType != null && valveSize != null && maxInletPressure != null)
+                    if (desiredSetPressure != null && spigotType != null && valveSize != null && maxInletPressure != null)
                     {
-                        await Navigation.PushAsync(new PressureRegulator2(maxInletPressure, _desiredSetPressure, _requiredFlowRate, valveApplication, valveBodyMaterial, valveSealMaterial, connectionType, gaugeType, valveSize));
+                        await Navigation.PushAsync(new PressureRegulator2(_valveApplication, _desiredSetPressure, _bodyMaterial, _sealMaterial, _spigotType, _gauge, _valveSize, _maxInletPressure, desiredSetPressure, valveSize, maxInletPressure, requiredFlowRate));
                     }
                     else
                     {
@@ -315,9 +328,9 @@ namespace SimplePressureRegulator.Views
                     }
                     break;
                 case 3: // Ultra-Pure Elastomer-Free
-                    if (_desiredSetPressure != null && connectionType != null && valveSize != null && maxInletPressure != null)
+                    if (desiredSetPressure != null && spigotType != null && valveSize != null && maxInletPressure != null)
                     {
-                        await Navigation.PushAsync(new PressureRegulator2(maxInletPressure, _desiredSetPressure, _requiredFlowRate, valveApplication, valveBodyMaterial, valveSealMaterial, connectionType, gaugeType, valveSize));
+                        await Navigation.PushAsync(new PressureRegulator2(_valveApplication, _desiredSetPressure, _bodyMaterial, _sealMaterial, _spigotType, _gauge, _valveSize, _maxInletPressure, desiredSetPressure, valveSize, maxInletPressure, requiredFlowRate));
                     }
                     else
                     {
@@ -325,9 +338,9 @@ namespace SimplePressureRegulator.Views
                     }
                     break;
                 case 4: // Ultra-Pure Shutoff Design
-                    if (_desiredSetPressure != null && connectionType != null && valveSize != null && maxInletPressure != null && gaugeType != null)
+                    if (desiredSetPressure != null && spigotType != null && valveSize != null && maxInletPressure != null && gauge != null)
                     {
-                        await Navigation.PushAsync(new PressureRegulator2(maxInletPressure, _desiredSetPressure, _requiredFlowRate, valveApplication, valveBodyMaterial, valveSealMaterial, connectionType, gaugeType, valveSize));
+                        await Navigation.PushAsync(new PressureRegulator2(_valveApplication, _desiredSetPressure, _bodyMaterial, _sealMaterial, _spigotType, _gauge, _valveSize, _maxInletPressure, desiredSetPressure, valveSize, maxInletPressure, requiredFlowRate));
                     }
                     else
                     {
