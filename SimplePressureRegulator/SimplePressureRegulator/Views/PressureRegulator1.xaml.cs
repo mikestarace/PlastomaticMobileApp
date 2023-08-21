@@ -283,7 +283,7 @@ namespace SimplePressureRegulator.Views
             _valveApplication = applicationPicker.Items[applicationPicker.SelectedIndex];
             _desiredSetPressure = desiredSetPressurePicker.Items[desiredSetPressurePicker.SelectedIndex];
             try { _bodyMaterial = materialPicker.Items[materialPicker.SelectedIndex]; } catch { }
-            try { _sealMaterial = sealMaterialPicker.Items[materialPicker.SelectedIndex]; } catch { }
+            try { _sealMaterial = sealMaterialPicker.Items[sealMaterialPicker.SelectedIndex]; } catch { }
             try { _spigotType = spigotTypePicker.Items[spigotTypePicker.SelectedIndex]; } catch{ }
             try { _gauge = gaugePicker.Items[gaugePicker.SelectedIndex]; } catch { }
             _valveSize = sizePicker.Items[sizePicker.SelectedIndex];
