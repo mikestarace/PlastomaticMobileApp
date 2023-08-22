@@ -12,7 +12,50 @@ namespace SimplePressureRegulator.Models
         public string PartNumber { get; set; }
         public string Price { get; set; }
         public string Category { get; set; }
-        public string ConnectionSize { get; set; }
+        private string connectionSize;
+        public string ConnectionSize
+        {
+            get { return connectionSize; }
+            set
+            {
+                if (value == "OneFourth")
+                {
+                    connectionSize = "1/4\"";
+                }
+                else if (value == "OneHalf")
+                {
+                    connectionSize = "1/2\"";
+                }
+                else if (value == "ThreeFourth")
+                {
+                    connectionSize = "3/4\"";
+                }
+                else if (value == "OneWhole")
+                {
+                    connectionSize = "1\"";
+                }
+                else if (value == "OneOneFourth")
+                {
+                    connectionSize = "1 1/4\"";
+                }
+                else if (value == "OneOneHalf")
+                {
+                    connectionSize = "1 1/2\"";
+                }
+                else if (value == "TwoWhole")
+                {
+                    connectionSize = "2\"";
+                }
+                else if (value == "ThreeWhole")
+                {
+                    connectionSize = "3\"";
+                }
+                else
+                {
+                    connectionSize = value;
+                }
+            }
+        }
         public string BodyMaterial { get; set; }
         public string SealMaterial { get; set; }
         public string ConnectionType { get; set; }
