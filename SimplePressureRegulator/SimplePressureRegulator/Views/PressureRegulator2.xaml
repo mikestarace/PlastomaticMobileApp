@@ -59,48 +59,41 @@
                 <Label x:Name="TwoWholePlaceholder" IsVisible="False" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,10,0,0"/>
                 <Label x:Name="ThreeWholePlaceholder" IsVisible="False" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,10,0,0"/>
 
-            
-                <ListView
-                      CachingStrategy="RecycleElement"
-                      HasUnevenRows="True"
-                      ItemsSource="{Binding Product}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Product">
-                            <ViewCell>
-                                <Grid Padding="10">
-                                    <Frame CornerRadius="20" HasShadow="True">
-                                        <StackLayout Orientation="Horizontal">
-                                            <Image Source="{Binding Image}" WidthRequest="66" />
-                                            <StackLayout VerticalOptions="Center">
-                                                <Label
+
+
+                <StackLayout Padding="10" BindableLayout.ItemsSource="{Binding Product}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="20" HasShadow="True">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="{Binding Image}" WidthRequest="66" />
+                                    <StackLayout VerticalOptions="Center">
+                                        <Label
                                         FontSize="Large"
                                         Text="{Binding PartNumber}"
                                         VerticalOptions="Center" />
-                                                <Label
+                                        <Label
                                         FontSize="Medium"
                                         Text="{Binding ConnectionSize, StringFormat='Size: {0}'}"
                                         VerticalOptions="Center" />
-                                                <Label
+                                        <Label
                                         FontSize="Medium"
                                         Text="{Binding ConnectionType, StringFormat='Connection Type: {0}'}"
                                         VerticalOptions="Center" />
-                                                <Label
+                                        <Label
                                         FontSize="Medium"
                                         Text="{Binding Price, StringFormat='Price: ${0}'}"
-                                        VerticalOptions="Center" />                                                
-                                            </StackLayout>
-                                        </StackLayout>
-                                    </Frame>
-                                </Grid>
-                            </ViewCell>
+                                        VerticalOptions="Center" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
 
-                </ListView>
-            
-            
 
-        </StackLayout>
+
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
