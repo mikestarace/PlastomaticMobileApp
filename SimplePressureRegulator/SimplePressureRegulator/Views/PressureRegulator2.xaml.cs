@@ -20,20 +20,9 @@ using Xamarin.Forms.Xaml;
 namespace SimplePressureRegulator.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PressureRegulator2 : ContentPage, INotifyPropertyChanged
+    public partial class PressureRegulator2 : ContentPage
     {
-        // START: Using INotifyPropertyChanged to update the xaml view
-        #region Events
-        public event PropertyChangedEventHandler PropertyChanged;
-        #endregion
-        protected void OnNotifyPropertyChanged([CallerMemberName] string memberName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(memberName));
-            }
-        }
-        
+        // START: Using INotifyPropertyChanged to update the xaml view        
         private ObservableRangeCollection<Product> _products;
         public ObservableRangeCollection<Product> Product
         {
@@ -43,7 +32,7 @@ namespace SimplePressureRegulator.Views
                 if (_products != value)
                 {
                     _products = value;
-                    OnNotifyPropertyChanged();
+                    OnPropertyChanged();
                 }
             }
         } // END: Using INotifyPropertyChanged to update the xaml view
