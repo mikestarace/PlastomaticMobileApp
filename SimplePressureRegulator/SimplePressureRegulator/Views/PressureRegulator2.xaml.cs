@@ -50,6 +50,14 @@ namespace SimplePressureRegulator.Views
             PipeSizeLabel.Text = _valveSize;
             MaxSystemInletLabel.Text = _maxInletPressure;
             RequiredFlowRateLabel.Text = requiredFlowRate.ToString() + " GPM";
+            string[] sizes = new string[7];
+            sizes[0] = "1/2\"";
+            sizes[1] = "3/4\"";
+            sizes[2] = "1\"";
+            sizes[3] = "1 1/4\"";
+            sizes[4] = "1 1/2\"";
+            sizes[5] = "2\"";
+            sizes[6] = "3\"";
 
 
             if (_valveApplication == "High Performance Pressure Regulator" || _valveApplication == "Differential Pressure Regulator")
@@ -61,6 +69,16 @@ namespace SimplePressureRegulator.Views
                 SpigotTypeLabel.IsVisible = true;
                 SpigotTypeLabel1.IsVisible = true;
                 MaterialLabel.Text = "PVDF";
+                if(_spigotType != "IPS")
+                {
+                    sizes[0] = "20 mm";
+                    sizes[1] = "25 mm";
+                    sizes[2] = "32 mm";
+                    sizes[3] = "40 mm";
+                    sizes[4] = "50 mm";
+                    sizes[5] = "63 mm";
+                    sizes[6] = "90 mm";
+                }
             } else if (_valveApplication == "Ultra-Pure Shutoff Design")
             {
                 SpigotTypeLabel.IsVisible = true;
@@ -70,6 +88,13 @@ namespace SimplePressureRegulator.Views
                 Grid.SetRow(RequiredFlowRateLabel1, 6);
                 GaugeLabel.IsVisible = true;
                 GaugeLabel1.IsVisible = true;
+                sizes[0] = "20 mm";
+                sizes[1] = "25 mm";
+                sizes[2] = "32 mm";
+                sizes[3] = "40 mm";
+                sizes[4] = "50 mm";
+                sizes[5] = "63 mm";
+                sizes[6] = "90 mm";
             }
 
             List<string> sizeList = new List<string>();
@@ -494,10 +519,10 @@ namespace SimplePressureRegulator.Views
             ThreeWholeArray[1, 4] // Pressure Drop
                 = 16.0;
 
-            CalculatePressureDrop(requiredFlowRate, OneFourthArray, OneHalfArray, ThreeFourthArray, OneWholeArray, OneOneHalfArray, TwoWholeArray, ThreeWholeArray);
+            CalculatePressureDrop(requiredFlowRate, OneFourthArray, OneHalfArray, ThreeFourthArray, OneWholeArray, OneOneHalfArray, TwoWholeArray, ThreeWholeArray, sizes);
         } // End of Main Method
 
-        void CalculatePressureDrop(int requiredFlowRate, double[,] OneFourthArray, double[,] OneHalfArray, double[,] ThreeFourthArray, double[,] OneWholeArray, double[,] OneOneHalfArray, double[,] TwoWholeArray, double[,] ThreeWholeArray)
+        void CalculatePressureDrop(int requiredFlowRate, double[,] OneFourthArray, double[,] OneHalfArray, double[,] ThreeFourthArray, double[,] OneWholeArray, double[,] OneOneHalfArray, double[,] TwoWholeArray, double[,] ThreeWholeArray, string[] sizes)
         {
             // 1/4" Valves
             if (requiredFlowRate >= OneFourthArray[0, 0] && requiredFlowRate <= OneFourthArray[0, 4])
@@ -525,13 +550,13 @@ namespace SimplePressureRegulator.Views
                 {
                     if (requiredFlowRate == OneHalfArray[0, i])
                     {
-                        OneHalfPlaceholder.Text = "1/2\" valve, pressure drop at " + requiredFlowRate + " GPM: " + OneHalfArray[1, i] + " PSI";
+                        OneHalfPlaceholder.Text = sizes[0] + " valve, pressure drop at " + requiredFlowRate + " GPM: " + OneHalfArray[1, i] + " PSI";
                         OneHalfPlaceholder.IsVisible = true;
                         break;
                     }
                     else if (requiredFlowRate < OneHalfArray[0, i])
                     {
-                        OneHalfPlaceholder.Text = "1/2\" valve, pressure drop at " + requiredFlowRate + " GPM: between " + OneHalfArray[1, i - 1] + " and " + OneHalfArray[1, i] + " PSI";
+                        OneHalfPlaceholder.Text = sizes[0] + " valve, pressure drop at " + requiredFlowRate + " GPM: between " + OneHalfArray[1, i - 1] + " and " + OneHalfArray[1, i] + " PSI";
                         OneHalfPlaceholder.IsVisible = true;
                         break;
                     }
@@ -544,13 +569,13 @@ namespace SimplePressureRegulator.Views
                 {
                     if (requiredFlowRate == ThreeFourthArray[0, i])
                     {
-                        ThreeFourthPlaceholder.Text = "3/4\" valve, pressure drop at " + requiredFlowRate + " GPM: " + ThreeFourthArray[1, i] + " PSI";
+                        ThreeFourthPlaceholder.Text = sizes[1] + " valve, pressure drop at " + requiredFlowRate + " GPM: " + ThreeFourthArray[1, i] + " PSI";
                         ThreeFourthPlaceholder.IsVisible = true;
                         break;
                     }
                     else if (requiredFlowRate < ThreeFourthArray[0, i])
                     {
-                        ThreeFourthPlaceholder.Text = "3/4\" valve, pressure drop at " + requiredFlowRate + " GPM: between " + ThreeFourthArray[1, i - 1] + " and " + ThreeFourthArray[1, i] + " PSI";
+                        ThreeFourthPlaceholder.Text = sizes[1] + " valve, pressure drop at " + requiredFlowRate + " GPM: between " + ThreeFourthArray[1, i - 1] + " and " + ThreeFourthArray[1, i] + " PSI";
                         ThreeFourthPlaceholder.IsVisible = true;
                         break;
                     }
@@ -563,14 +588,33 @@ namespace SimplePressureRegulator.Views
                 {
                     if (requiredFlowRate == OneWholeArray[0, i])
                     {
-                        OneWholePlaceholder.Text = "1\" valve, pressure drop at " + requiredFlowRate + " GPM: " + OneWholeArray[1, i] + " PSI";
+                        OneWholePlaceholder.Text = sizes[2] + " valve, pressure drop at " + requiredFlowRate + " GPM: " + OneWholeArray[1, i] + " PSI";
                         OneWholePlaceholder.IsVisible = true;
                         break;
                     }
                     else if (requiredFlowRate < OneWholeArray[0, i])
                     {
-                        OneWholePlaceholder.Text = "1\" valve, pressure drop at " + requiredFlowRate + " GPM: between " + OneWholeArray[1, i - 1] + " and " + OneWholeArray[1, i] + " PSI";
+                        OneWholePlaceholder.Text = sizes[2] + " valve, pressure drop at " + requiredFlowRate + " GPM: between " + OneWholeArray[1, i - 1] + " and " + OneWholeArray[1, i] + " PSI";
                         OneWholePlaceholder.IsVisible = true;
+                        break;
+                    }
+                }
+            }
+            //1 1/4" Valves
+            if (requiredFlowRate >= OneOneHalfArray[0, 0] && requiredFlowRate <= OneOneHalfArray[0, 4])
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (requiredFlowRate == OneOneHalfArray[0, i])
+                    {
+                        OneOneFourthPlaceholder.Text = sizes[3] + " valve, pressure drop at " + requiredFlowRate + " GPM: " + OneOneHalfArray[1, i] + " PSI";
+                        OneOneFourthPlaceholder.IsVisible = true;
+                        break;
+                    }
+                    else if (requiredFlowRate < OneOneHalfArray[0, i])
+                    {
+                        OneOneFourthPlaceholder.Text = sizes[3] + " valve, pressure drop at " + requiredFlowRate + " GPM: between " + OneOneHalfArray[1, i - 1] + " and " + OneOneHalfArray[1, i] + " PSI";
+                        OneOneFourthPlaceholder.IsVisible = true;
                         break;
                     }
                 }
@@ -582,13 +626,13 @@ namespace SimplePressureRegulator.Views
                 {
                     if (requiredFlowRate == OneOneHalfArray[0, i])
                     {
-                        OneOneHalfPlaceholder.Text = "1 1/2\" valve, pressure drop at " + requiredFlowRate + " GPM: " + OneOneHalfArray[1, i] + " PSI";
+                        OneOneHalfPlaceholder.Text = sizes[4] + " valve, pressure drop at " + requiredFlowRate + " GPM: " + OneOneHalfArray[1, i] + " PSI";
                         OneOneHalfPlaceholder.IsVisible = true;
                         break;
                     }
                     else if (requiredFlowRate < OneOneHalfArray[0, i])
                     {
-                        OneOneHalfPlaceholder.Text = "1 1/2\" valve, pressure drop at " + requiredFlowRate + " GPM: between " + OneOneHalfArray[1, i - 1] + " and " + OneOneHalfArray[1, i] + " PSI";
+                        OneOneHalfPlaceholder.Text = sizes[4] + " valve, pressure drop at " + requiredFlowRate + " GPM: between " + OneOneHalfArray[1, i - 1] + " and " + OneOneHalfArray[1, i] + " PSI";
                         OneOneHalfPlaceholder.IsVisible = true;
                         break;
                     }
@@ -601,13 +645,13 @@ namespace SimplePressureRegulator.Views
                 {
                     if (requiredFlowRate == TwoWholeArray[0, i])
                     {
-                        TwoWholePlaceholder.Text = "2\" valve, pressure drop at " + requiredFlowRate + " GPM: " + TwoWholeArray[1, i] + " PSI";
+                        TwoWholePlaceholder.Text = sizes[5] + " valve, pressure drop at " + requiredFlowRate + " GPM: " + TwoWholeArray[1, i] + " PSI";
                         TwoWholePlaceholder.IsVisible = true;
                         break;
                     }
                     else if (requiredFlowRate < TwoWholeArray[0, i])
                     {
-                        TwoWholePlaceholder.Text = "2\" valve, pressure drop at " + requiredFlowRate + " GPM: between " + TwoWholeArray[1, i - 1] + " and " + TwoWholeArray[1, i] + " PSI";
+                        TwoWholePlaceholder.Text = sizes[5] + " valve, pressure drop at " + requiredFlowRate + " GPM: between " + TwoWholeArray[1, i - 1] + " and " + TwoWholeArray[1, i] + " PSI";
                         TwoWholePlaceholder.IsVisible = true;
                         break;
                     }
@@ -620,13 +664,13 @@ namespace SimplePressureRegulator.Views
                 {
                     if (requiredFlowRate == ThreeWholeArray[0, i])
                     {
-                        ThreeWholePlaceholder.Text = "3\" valve, pressure drop at " + requiredFlowRate + " GPM: " + ThreeWholeArray[1, i] + " PSI";
+                        ThreeWholePlaceholder.Text = sizes[6] + " valve, pressure drop at " + requiredFlowRate + " GPM: " + ThreeWholeArray[1, i] + " PSI";
                         ThreeWholePlaceholder.IsVisible = true;
                         break;
                     }
                     else if (requiredFlowRate < ThreeWholeArray[0, i])
                     {
-                        ThreeWholePlaceholder.Text = "3\" valve, pressure drop at " + requiredFlowRate + " GPM: between " + ThreeWholeArray[1, i - 1] + " and " + ThreeWholeArray[1, i] + " PSI";
+                        ThreeWholePlaceholder.Text = sizes[6] + " valve, pressure drop at " + requiredFlowRate + " GPM: between " + ThreeWholeArray[1, i - 1] + " and " + ThreeWholeArray[1, i] + " PSI";
                         ThreeWholePlaceholder.IsVisible = true;
                         break;
                     }
