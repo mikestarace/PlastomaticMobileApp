@@ -20,19 +20,9 @@ using Xamarin.Forms.Xaml;
 namespace SimplePressureRegulator.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PressureRegulator2 : ContentPage, INotifyPropertyChanged
+    public partial class PressureRegulator2 : ContentPage
     {
-        // START: Using INotifyPropertyChanged to update the xaml view
-        #region Events
-        public event PropertyChangedEventHandler PropertyChanged;
-        #endregion
-        protected void OnNotifyPropertyChanged([CallerMemberName] string memberName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(memberName));
-            }
-        }
+        // START: Using INotifyPropertyChanged to update the xaml view        
         private ObservableRangeCollection<Product> _products;
         public ObservableRangeCollection<Product> Product
         {
@@ -42,11 +32,10 @@ namespace SimplePressureRegulator.Views
                 if (_products != value)
                 {
                     _products = value;
-                    OnNotifyPropertyChanged();
+                    OnPropertyChanged();
                 }
             }
         } // END: Using INotifyPropertyChanged to update the xaml view
-
 
         public PressureRegulator2(string _valveApplication, string _desiredSetPressure, string _bodyMaterial, string _sealMaterial, string _spigotType, string _gauge, string _valveSize, string _maxInletPressure, int? desiredSetPressure, int? valveSize, int? maxInletPressure, int requiredFlowRate)
         {
@@ -643,7 +632,7 @@ namespace SimplePressureRegulator.Views
                     }
                 }
             }
-        } // End of PHRM Method
+        } // End of Calculate Pressure Drop Method
 
         async Task GetProduct(string _valveApplication, List<string> sizeArray, string _bodyMaterial, string _sealMaterial, string _spigotType, string _gauge)
         {
@@ -687,39 +676,6 @@ namespace SimplePressureRegulator.Views
                     var products = await InternetProductService.GetUPRS(valveSize, _spigotType, _gauge);
                     Product.AddRange(products);
                 }
-            }
-
-            foreach (Product product in Product.Where(x => x.ConnectionSize == "OneFourth"))
-            {
-                product.ConnectionSize = "1/4\"";
-            }
-            foreach (Product product in Product.Where(x => x.ConnectionSize == "OneHalf"))
-            {
-                product.ConnectionSize = "1/2\"";
-            }
-            foreach (Product product in Product.Where(x => x.ConnectionSize == "ThreeFourth"))
-            {
-                product.ConnectionSize = "3/4\"";
-            }
-            foreach (Product product in Product.Where(x => x.ConnectionSize == "OneWhole"))
-            {
-                product.ConnectionSize = "1\"";
-            }
-            foreach (Product product in Product.Where(x => x.ConnectionSize == "OneOneFourth"))
-            {
-                product.ConnectionSize = "1 1/4\"";
-            }
-            foreach (Product product in Product.Where(x => x.ConnectionSize == "OneOneHalf"))
-            {
-                product.ConnectionSize = "1 1/2\"";
-            }
-            foreach (Product product in Product.Where(x => x.ConnectionSize == "TwoWhole"))
-            {
-                product.ConnectionSize = "2\"";
-            }
-            foreach (Product product in Product.Where(x => x.ConnectionSize == "ThreeWhole"))
-            {
-                product.ConnectionSize = "3\"";
             }
         }
     }
