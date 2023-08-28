@@ -722,5 +722,12 @@ namespace SimplePressureRegulator.Views
                 }
             }
         }
+
+        private async void OnTapped(object sender, EventArgs e)
+        {
+            var button = (StackLayout)sender;
+            var url = "https://www.plastomatic.com/products/product/" + button.ClassId;
+            await Browser.OpenAsync(url);
+        }
     }
 }

@@ -65,7 +65,10 @@
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <Frame CornerRadius="20" HasShadow="True">
-                                <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Horizontal" ClassId="{Binding PartNumber}" >
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnTapped"/>
+                                    </StackLayout.GestureRecognizers>
                                     <Image Source="{Binding Image}" WidthRequest="66" />
                                     <StackLayout VerticalOptions="Center">
                                         <Label
