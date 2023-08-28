@@ -680,6 +680,7 @@ namespace SimplePressureRegulator.Views
 
         async Task GetProduct(string _valveApplication, List<string> sizeArray, string _bodyMaterial, string _sealMaterial, string _spigotType, string _gauge)
         {
+            IsBusy = true;
             Product = new ObservableRangeCollection<Product>();
             if (_valveApplication == "High Performance Pressure Regulator")
             {
@@ -721,6 +722,8 @@ namespace SimplePressureRegulator.Views
                     Product.AddRange(products);
                 }
             }
+            IsBusy = false;
+            OnPropertyChanged();
         }
 
         private async void OnTapped(object sender, EventArgs e)
