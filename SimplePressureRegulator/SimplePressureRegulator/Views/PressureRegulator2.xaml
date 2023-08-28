@@ -60,6 +60,13 @@
                 <Label x:Name="ThreeWholePlaceholder" IsVisible="False" Grid.Row="0" Grid.Column="0" FontSize="18" Margin="10,10,0,0"/>
 
 
+                <Label Text="Loading valves..."
+               x:Name="LabelLoad"
+               IsVisible="{Binding IsBusy}"
+               FontSize="18"
+               HorizontalOptions="Center"/>
+
+
 
                 <StackLayout Padding="10" BindableLayout.ItemsSource="{Binding Product}">
                     <BindableLayout.ItemTemplate>
