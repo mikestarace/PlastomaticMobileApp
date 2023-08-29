@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq.Expressions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -210,36 +210,36 @@ namespace SimplePressureRegulator.Views
             switch (valveSize)
             {
                 case 0: // 1/4"
-                    maxInletPicker.Items.Add("15 PSI");
-                    maxInletPicker.Items.Add("30 & Up");
+                    maxInletPicker.Items.Add("15-30 PSI");
+                    maxInletPicker.Items.Add("30-150 PSI");
                     break;
                 case 1: // 1/2"
-                    maxInletPicker.Items.Add("15 PSI");
-                    maxInletPicker.Items.Add("30 & Up");
+                    maxInletPicker.Items.Add("15-30 PSI");
+                    maxInletPicker.Items.Add("30-150 PSI");
                     break;
                 case 2: // 3/4"
-                    maxInletPicker.Items.Add("10 PSI");
-                    maxInletPicker.Items.Add("25 & Up");
+                    maxInletPicker.Items.Add("10-25 PSI");
+                    maxInletPicker.Items.Add("25-150 PSI");
                     break;
                 case 3: // 1"
-                    maxInletPicker.Items.Add("10 PSI");
-                    maxInletPicker.Items.Add("25 & Up");
+                    maxInletPicker.Items.Add("10-25 PSI");
+                    maxInletPicker.Items.Add("25-150 PSI");
                     break;
                 case 4: // 1 1/2"
-                    maxInletPicker.Items.Add("10 PSI");
-                    maxInletPicker.Items.Add("25 & Up");
+                    maxInletPicker.Items.Add("10-25 PSI");
+                    maxInletPicker.Items.Add("25-150 PSI");
                     break;
                 case 5: // 2"
-                    maxInletPicker.Items.Add("10 PSI");
-                    maxInletPicker.Items.Add("25 & Up");
+                    maxInletPicker.Items.Add("10-25 PSI");
+                    maxInletPicker.Items.Add("25-150 PSI");
                     break;
                 case 6: // 3"
-                    maxInletPicker.Items.Add("10 PSI");
-                    maxInletPicker.Items.Add("25 & Up");
+                    maxInletPicker.Items.Add("10-25 PSI");
+                    maxInletPicker.Items.Add("25-150 PSI");
                     break;
                 case 7: // Extra for 1 1/4"
-                    maxInletPicker.Items.Add("10 PSI");
-                    maxInletPicker.Items.Add("25 & Up");
+                    maxInletPicker.Items.Add("10-25 PSI");
+                    maxInletPicker.Items.Add("25-150 PSI");
                     break;
             }
         }
@@ -279,15 +279,15 @@ namespace SimplePressureRegulator.Views
 
         async void calculateCheck(object sender, EventArgs args)
         {
-            string _requiredFlowRate = requiredFlowRateEntry.Text;            
-            _valveApplication = applicationPicker.Items[applicationPicker.SelectedIndex];
-            _desiredSetPressure = desiredSetPressurePicker.Items[desiredSetPressurePicker.SelectedIndex];
+            string _requiredFlowRate = requiredFlowRateEntry.Text;
+            try { _valveApplication = applicationPicker.Items[applicationPicker.SelectedIndex]; } catch { }
+            try { _desiredSetPressure = desiredSetPressurePicker.Items[desiredSetPressurePicker.SelectedIndex]; } catch { }
             try { _bodyMaterial = materialPicker.Items[materialPicker.SelectedIndex]; } catch { }
             try { _sealMaterial = sealMaterialPicker.Items[sealMaterialPicker.SelectedIndex]; } catch { }
             try { _spigotType = spigotTypePicker.Items[spigotTypePicker.SelectedIndex]; } catch{ }
             try { _gauge = gaugePicker.Items[gaugePicker.SelectedIndex]; } catch { }
-            _valveSize = sizePicker.Items[sizePicker.SelectedIndex];
-            _maxInletPressure = maxInletPicker.Items[maxInletPicker.SelectedIndex];
+            try { _valveSize = sizePicker.Items[sizePicker.SelectedIndex]; } catch { }
+            try { _maxInletPressure = maxInletPicker.Items[maxInletPicker.SelectedIndex]; } catch { }
             try { requiredFlowRate = Int32.Parse(_requiredFlowRate); }
             catch
             {
