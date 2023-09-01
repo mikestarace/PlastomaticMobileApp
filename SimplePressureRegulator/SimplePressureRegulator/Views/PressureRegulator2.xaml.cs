@@ -723,7 +723,6 @@ namespace SimplePressureRegulator.Views
                 }
             }
             IsBusy = false;
-            OnPropertyChanged();
         }
 
         private async void OnTapped(object sender, EventArgs e)
