@@ -140,10 +140,10 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon~ipad.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\downarrow.imageset\Contents.json">
+    <ImageAsset Include="Assets.xcassets\ic_arrow_drop_down.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\downarrow.imageset\ic_arrow_drop_down.png">
+    <ImageAsset Include="Assets.xcassets\ic_arrow_drop_down.imageset\ic_arrow_drop_down.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\PlastomaticLogo.imageset\Contents.json">
