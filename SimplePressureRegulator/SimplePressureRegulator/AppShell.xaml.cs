@@ -17,6 +17,8 @@ namespace SimplePressureRegulator
             InitializeComponent();
             Routing.RegisterRoute(nameof(PressureRegulator1), typeof(PressureRegulator1));
             Routing.RegisterRoute(nameof(PressureRegulator2), typeof(PressureRegulator2));
+            Routing.RegisterRoute(nameof(PulsationDampener1), typeof(PulsationDampener1));
+            Routing.RegisterRoute(nameof(PulsationDampener2), typeof(PulsationDampener2));
         }
     }
 }

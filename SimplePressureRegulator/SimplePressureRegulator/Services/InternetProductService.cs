@@ -14,6 +14,12 @@ namespace SimplePressureRegulator.Services
 {
     public static class InternetProductService
     {
+        /* 
+        
+        This service will connect to our API and return json data.
+
+        */
+
         static string BaseUrl = "https://plastomaticappapi.azurewebsites.net/";
 
         static HttpClient client;
@@ -53,6 +59,12 @@ namespace SimplePressureRegulator.Services
         public static async Task<IEnumerable<Product>> GetUPRS(string _valveSize, string _spigotType, string _gauge)
         {
             var json = await client.GetStringAsync($"api/products/UPRS/" + _valveSize + "/" + _spigotType + "/" + _gauge);
+            var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(json);
+            return products;
+        }
+        public static async Task<IEnumerable<Product>> GetPDS(string _valveSize, string _bodyMaterial, string _sealMaterial)
+        {
+            var json = await client.GetStringAsync($"api/products/PDS/" + _valveSize + "/" + _bodyMaterial + "/" + _sealMaterial);
             var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(json);
             return products;
         }

@@ -1,0 +1,59 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:SimplePressureRegulator.Controls"
+             x:Class="SimplePressureRegulator.Views.PulsationDampener1">
+    <ContentPage.Content>
+        <ScrollView HeightRequest="1000" Margin="0,0,0,10">
+            <StackLayout>
+                <Label Text="" FontSize="5"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+                <Label Text="Water Hammer Arrestor Tool" FontSize="Title" Padding="30,10,30,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+                <Label Text="Select your application parameters" HorizontalOptions="Center" FontSize="16" TextColor="Black"/>
+
+                <controls:CustomPicker x:Name="diameterPicker" Title="Pipe Diameter" SelectedIndexChanged="AssignPipeDiameter" Margin="10" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                    <controls:CustomPicker.Items>
+                        <x:String>1/4"</x:String>
+                        <x:String>3/8"</x:String>
+                        <x:String>1/2"</x:String>
+                        <x:String>3/4"</x:String>
+                        <x:String>1"</x:String>
+                        <x:String>1 1/2"</x:String>
+                        <x:String>2"</x:String>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
+
+                <controls:CustomPicker x:Name="lengthPicker" Title="Length of Pipe" SelectedIndexChanged="AssignPipeLength" Margin="10" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                    <controls:CustomPicker.Items>
+                        <x:String>25 ft</x:String>
+                        <x:String>50 ft</x:String>
+                        <x:String>100 ft</x:String>
+                        <x:String>200 ft</x:String>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
+
+                <controls:CustomPicker x:Name="pressurePicker" Title="Line Pressure" SelectedIndexChanged="AssignPressure" Margin="10" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                    <controls:CustomPicker.Items>
+                        <x:String>Less than 75 PSI</x:String>
+                        <x:String>Greater than 75 PSI</x:String>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
+
+                <controls:CustomPicker x:Name="materialPicker" Title="Body Material" SelectedIndexChanged="AssignMaterial" Margin="10" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                    <controls:CustomPicker.Items>
+                        <x:String>PVC</x:String>
+                        <x:String>CPVC</x:String>
+                        <x:String>Polypro</x:String>
+                        <x:String>PVDF</x:String>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
+
+                <controls:CustomPicker x:Name="sealMaterialPicker" Title="Seal Material" SelectedIndexChanged="AssignSealMaterial" Margin="10" FontSize="18" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                    <controls:CustomPicker.Items>
+                        <x:String>Viton</x:String>
+                        <x:String>EPDM</x:String>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
+
+                <Button Text="Calculate" Clicked="calculateCheck" BackgroundColor="#2196F3" TextColor="White" Margin="10,10,10,0" x:Name="CalculateButton"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

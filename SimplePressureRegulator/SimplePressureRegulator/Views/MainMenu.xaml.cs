@@ -22,5 +22,9 @@ namespace SimplePressureRegulator.Views
         {
             await Shell.Current.GoToAsync(nameof(PressureRegulator1));
         }
+        async void StartPulsationDampener(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(PulsationDampener1));
+        }
     }
 }
