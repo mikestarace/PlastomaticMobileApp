@@ -32,6 +32,12 @@ namespace SimplePressureRegulator.Services
             };
         }
 
+        public static async Task<IEnumerable<Product>> EstablishConnection()
+        {
+            await client.GetStringAsync($"api");
+            return null;
+        }
+
         public static async Task<IEnumerable<Product>> GetPRHM(string _valveSize, string _bodyMaterial, string _sealMaterial)
         {
             var json = await client.GetStringAsync($"api/products/PRHM/" + _valveSize + "/" + _bodyMaterial + "/" + _sealMaterial);
