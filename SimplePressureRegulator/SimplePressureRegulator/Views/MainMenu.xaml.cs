@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimplePressureRegulator.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace SimplePressureRegulator.Views
         public MainMenu()
         {
             InitializeComponent();
+            InternetProductService.EstablishConnection();
         }
 
         async void StartPressureRegulator(object sender, EventArgs e)
