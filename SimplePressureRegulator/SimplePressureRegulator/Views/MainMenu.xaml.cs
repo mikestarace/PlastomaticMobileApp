@@ -28,5 +28,17 @@ namespace SimplePressureRegulator.Views
         {
             await Shell.Current.GoToAsync(nameof(PulsationDampener1));
         }
+        async void StartGPMCalculator(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(GPMCalculator));
+        }
+        async void StartCvCalculator(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(CvCalculator));
+        }
+        async void StartPressureDropCalculator(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(PressureDropCalculator));
+        }
     }
 }

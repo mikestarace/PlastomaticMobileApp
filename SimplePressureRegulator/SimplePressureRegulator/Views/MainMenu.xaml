@@ -13,6 +13,18 @@
         <Label Text="Valve Specification App" FontSize="Title" Padding="30,10,30,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
         <Label Text="Beta Version" FontSize="16" Padding="30,0,30,0"  HorizontalOptions="Center"/>
         <StackLayout Margin="10,10,10,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                </Grid.ColumnDefinitions>
+                <Button Text="GPM" Clicked="StartGPMCalculator" Grid.Row="0" Grid.Column="0" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
+                <Button Text="Cv" Clicked="StartCvCalculator" Grid.Row="0" Grid.Column="1" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
+                <Button Text="Pressure Drop" Clicked="StartPressureDropCalculator" Grid.Row="0" Grid.Column="2" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
+            </Grid>
+            
             <Button Text="Pressure Regulator Tool" Clicked="StartPressureRegulator" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
             <Button Text="Water Hammer Arrestor Tool" Clicked="StartPulsationDampener" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
             <Button Text="More coming soon..."/>
