@@ -5,13 +5,12 @@
              Shell.NavBarIsVisible="False">
 
     <StackLayout>
-        <Label Text=" " FontSize="20" Padding="30,10,30,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
-        <Image Source="PlastomaticLogo"
+        <Label Text=" " FontSize="20" Margin="10,10,10,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+        <Image Source="PlastomaticLogo" Margin="0,0,0,20"
        WidthRequest="{OnPlatform iOS=300, Android=250}"
        HorizontalOptions="Center" />
-        <Label Text="" FontSize="20" Padding="30,10,30,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
-        <Label Text="Valve Specification App" FontSize="Title" Padding="30,10,30,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
-        <Label Text="Beta Version" FontSize="16" Padding="30,0,30,0"  HorizontalOptions="Center"/>
+        <Label Text="Valve Specification" FontSize="Title" Margin="10,10,10,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+        <Label Text="What do you need assistance with today?" FontSize="16" Margin="10,0,10,5"  HorizontalOptions="Center"/>
         <StackLayout Margin="10,10,10,0">
             <Grid>
                 <Grid.RowDefinitions>
@@ -25,8 +24,8 @@
                 <Button Text="Pressure Drop" Clicked="StartPressureDropCalculator" Grid.Row="0" Grid.Column="2" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
             </Grid>
             
-            <Button Text="Pressure Regulator Tool" Clicked="StartPressureRegulator" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
-            <Button Text="Water Hammer Arrestor Tool" Clicked="StartPulsationDampener" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
+            <Button Text="Pressure Regulator Specs" Clicked="StartPressureRegulator" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
+            <Button Text="Water Hammer Arrestor Specs" Clicked="StartPulsationDampener" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
             <Button Text="More coming soon..."/>
         </StackLayout>
     </StackLayout>
