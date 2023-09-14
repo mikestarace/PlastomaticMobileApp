@@ -19,6 +19,12 @@ namespace SimplePressureRegulator
             Routing.RegisterRoute(nameof(PressureRegulator2), typeof(PressureRegulator2));
             Routing.RegisterRoute(nameof(PulsationDampener1), typeof(PulsationDampener1));
             Routing.RegisterRoute(nameof(PulsationDampener2), typeof(PulsationDampener2));
+            Routing.RegisterRoute(nameof(GPMCalculator), typeof(GPMCalculator));
+            Routing.RegisterRoute(nameof(GPMCalculator2), typeof(GPMCalculator2));
+            Routing.RegisterRoute(nameof(CvCalculator), typeof(CvCalculator));
+            Routing.RegisterRoute(nameof(CvCalculator2), typeof(CvCalculator2));
+            Routing.RegisterRoute(nameof(PressureDropCalculator), typeof(PressureDropCalculator));
+            Routing.RegisterRoute(nameof(PressureDropCalculator2), typeof(PressureDropCalculator2));
         }
     }
 }
