@@ -1,12 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:SimplePressureRegulator.Controls"
              x:Class="SimplePressureRegulator.Views.CvCalculator">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="This tool is not ready yet. Check back later."
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView HeightRequest="1000" Margin="0,0,0,10">
+            <StackLayout>
+                <Label Text="" FontSize="5"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+                <Label Text="Cv Calculator" FontSize="Title" Padding="30,10,30,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+                <Label Text="Enter your application parameters. The specific gravity of water is 1, but you can enter a different value if necessary." Margin="15,0,0,10" HorizontalOptions="Center" FontSize="16" TextColor="Black" Grid.ColumnSpan="3"/>
+
+                <Grid x:Name="EntryGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" x:Name="GPMLabel" Grid.Column="0" Text="Gallons Per Minute: " FontSize="18" Margin="15,10,0,0" TextColor="#0000EE"/>
+                    <controls:CustomEntry x:Name="GPMEntry" Grid.Row="0" Grid.Column="1" TextColor="Black" Text="{Binding GPM}"/>
+                    <Label Grid.Row="0" x:Name="GPMLabel2" Grid.Column="2" Text="GPM" FontSize="18" Margin="0,10,0,0" TextColor="#0000EE"/>
+
+                    <Label Grid.Row="1" x:Name="GravityLabel" Grid.Column="0" Text="Specific Gravity of Fluid: " FontSize="18" Margin="15,10,0,0" TextColor="#0000EE"/>
+                    <controls:CustomEntry x:Name="GravityEntry" Grid.Row="1" Grid.Column="1" TextColor="Black" Text="{Binding SpecificGravity}"/>
+
+                    <Label Grid.Row="2" x:Name="InletLabel" Grid.Column="0" Text="Inlet Pressure: " FontSize="18" Margin="15,10,0,0" TextColor="#0000EE"/>
+                    <controls:CustomEntry x:Name="InletEntry" Grid.Row="2" Grid.Column="1" TextColor="Black" Text="{Binding InletPressure}"/>
+                    <Label Grid.Row="2" x:Name="InletLabel2" Grid.Column="2" Text="PSI" FontSize="18" Margin="0,10,0,0" TextColor="#0000EE"/>
+
+                    <Label Grid.Row="3" x:Name="OutletLabel" Grid.Column="0" Text="Outlet Pressure: " FontSize="18" Margin="15,10,0,0" TextColor="#0000EE"/>
+                    <controls:CustomEntry x:Name="OutletEntry" Grid.Row="3" Grid.Column="1" TextColor="Black" Text="{Binding OutletPressure}"/>
+                    <Label Grid.Row="3" x:Name="OutletLabel2" Grid.Column="2" Text="PSI" FontSize="18" Margin="0,10,0,0" TextColor="#0000EE"/>
+                </Grid>
+
+                <Button Text="Calculate" Clicked="calculateCheck" BackgroundColor="#2196F3" TextColor="White" Margin="10,10,10,0" x:Name="CalculateButton"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

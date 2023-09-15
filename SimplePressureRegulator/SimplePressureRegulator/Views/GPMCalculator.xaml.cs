@@ -46,6 +46,8 @@ namespace SimplePressureRegulator.Views
                     sizePicker.Items.Add("1 1/4\"");
                     sizePicker.Items.Add("1 1/2\"");
                     sizePicker.Items.Add("2\"");
+                    sizePicker.Items.Add("3\"");
+                    sizePicker.Items.Add("4\"");
                     MaxInlet = "185";
                     MaxOutlet = "185";
                     break;
@@ -217,9 +219,9 @@ namespace SimplePressureRegulator.Views
                 return;
             }
 
-            if (outletPressure > inletPressure)
+            if (outletPressure >= inletPressure)
             {
-                await DisplayAlert("Error", "Your outlet pressure cannot be greater than inlet pressure", "Okay");
+                await DisplayAlert("Error", "Inlet pressure must be greater than outlet pressure", "Okay");
                 return;
             }
             if (inletPressure > double.Parse(MaxInlet))
@@ -232,9 +234,14 @@ namespace SimplePressureRegulator.Views
                 await DisplayAlert("Error", "Your outlet pressure cannot be greater than the maximum outlet pressure", "Okay");
                 return;
             }
-            if (specificGravity <= 0 || outletPressure <= 0 || inletPressure <= 0)
+            if (specificGravity <= 0)
             {
-                await DisplayAlert("Error", "Values must be greater than 0.", "Okay");
+                await DisplayAlert("Error", "Specific Gravity must be greater than 0.", "Okay");
+                return;
+            }
+            if (inletPressure < 0 || outletPressure < 0)
+            {
+                await DisplayAlert("Error", "Pressure values cannot be negative.", "Okay");
                 return;
             }
 
