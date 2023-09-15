@@ -32,7 +32,7 @@ namespace SimplePressureRegulator.Views
             ValveSizeLabel.Text = _valveSize;
             GravityLabel.Text = _specificGravity;
             double pressureDrop = inletPressure - outletPressure;
-            PressureDropLabel.Text = Math.Round(pressureDrop, 1).ToString();
+            PressureDropLabel.Text = Math.Round(pressureDrop, 1).ToString() + " PSI";
 
             double cvFactor = 0;
 

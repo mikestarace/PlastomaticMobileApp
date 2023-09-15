@@ -113,7 +113,7 @@ namespace SimplePressureRegulator.Views
             try { gpm = double.Parse(_gpm); }
             catch
             {
-                await DisplayAlert("Error", "Please enter a valid GPM.", "Okay");
+                await DisplayAlert("Error", "Please enter a valid flow rate.", "Okay");
                 return;
             }
             try { specificGravity = double.Parse(_specificGravity); }
@@ -147,7 +147,7 @@ namespace SimplePressureRegulator.Views
             }
             if (inletPressure < 0 || outletPressure < 0 || gpm < 0)
             {
-                await DisplayAlert("Error", "GPM and pressure values cannot be negative.", "Okay");
+                await DisplayAlert("Error", "Flow Rate and pressure values cannot be negative.", "Okay");
                 return;
             }
 
