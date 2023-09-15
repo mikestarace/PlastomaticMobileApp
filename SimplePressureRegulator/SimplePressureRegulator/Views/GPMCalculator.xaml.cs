@@ -169,7 +169,7 @@ namespace SimplePressureRegulator.Views
         }
         public string MaxInlet
         {
-            get => _maxInlet;
+            get => _maxInlet + " PSI";
             set
             {
                 if (_maxInlet != value)
@@ -181,7 +181,7 @@ namespace SimplePressureRegulator.Views
         }
         public string MaxOutlet
         {
-            get => _maxOutlet;
+            get => _maxOutlet + " PSI";
             set
             {
                 if (_maxOutlet != value)
@@ -224,12 +224,12 @@ namespace SimplePressureRegulator.Views
                 await DisplayAlert("Error", "Inlet pressure must be greater than outlet pressure", "Okay");
                 return;
             }
-            if (inletPressure > double.Parse(MaxInlet))
+            if (inletPressure > double.Parse(_maxInlet))
             {
                 await DisplayAlert("Error", "Your inlet pressure cannot be greater than the maximum inlet pressure", "Okay");
                 return;
             }
-            if (outletPressure > double.Parse(MaxOutlet))
+            if (outletPressure > double.Parse(_maxOutlet))
             {
                 await DisplayAlert("Error", "Your outlet pressure cannot be greater than the maximum outlet pressure", "Okay");
                 return;
