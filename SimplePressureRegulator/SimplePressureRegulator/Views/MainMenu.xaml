@@ -24,8 +24,8 @@
                 <Button Text="Pressure Drop" Clicked="StartPressureDropCalculator" Grid.Row="0" Grid.Column="2" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
             </Grid>
             
-            <Button Text="Pressure Regulator Specs" Clicked="StartPressureRegulator" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
-            <Button Text="Water Hammer Arrestor Specs" Clicked="StartPulsationDampener" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
+            <Button Text="Pressure Regulator Sizing" Clicked="StartPressureRegulator" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
+            <Button Text="Water Hammer Arrestor Sizing" Clicked="StartPulsationDampener" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
             <Button Text="More coming soon..."/>
         </StackLayout>
     </StackLayout>

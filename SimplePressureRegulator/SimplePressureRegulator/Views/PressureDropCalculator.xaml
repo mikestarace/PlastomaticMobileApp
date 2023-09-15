@@ -1,12 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:SimplePressureRegulator.Controls"
              x:Class="SimplePressureRegulator.Views.PressureDropCalculator">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="This tool is not ready yet. Check back later."
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView HeightRequest="1000" Margin="0,0,0,10">
+            <StackLayout>
+                <Label Text="" FontSize="5"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+                <Label Text="Pressure Drop Calculator" FontSize="Title" Padding="30,10,30,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+                <Label Text="Select your application parameters" HorizontalOptions="Center" FontSize="16" TextColor="Black"/>
+
+                <controls:CustomPicker x:Name="applicationPicker" Title="Type of valve" SelectedIndexChanged="AssignApplication" Margin="10" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                    <controls:CustomPicker.Items>
+                        <x:String>Ball Valve</x:String>
+                        <x:String>Direct Acting Solenoid Valve</x:String>
+                        <x:String>Pilot Operated Solenoid Valve</x:String>
+                        <x:String>Globe Style Shutoff Valve</x:String>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
+
+                <controls:CustomPicker x:Name="sizePicker" Title="Pipe size" SelectedIndexChanged="AssignPipeSize" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE"/>
+
+                <Grid x:Name="EntryGrid" IsVisible="False">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="Enter a specific gravity and flow rate. The specific gravity of water is 1, but you can enter a different value if necessary." Margin="15,10,0,0" HorizontalOptions="Center" FontSize="16" TextColor="Black" Grid.ColumnSpan="3"/>
+
+                    <Label Grid.Row="1" x:Name="GravityLabel" Grid.Column="0" Text="Specific Gravity of Fluid: " FontSize="18" Margin="15,10,0,0" TextColor="#0000EE"/>
+                    <controls:CustomEntry x:Name="GravityEntry" Grid.Row="1" Grid.Column="1" TextColor="Black" Text="{Binding SpecificGravity}"/>
+
+                    <Label Grid.Row="2" x:Name="GPMLabel" Grid.Column="0" Text="Flow Rate: " FontSize="18" Margin="15,10,0,0" TextColor="#0000EE"/>
+                    <controls:CustomEntry x:Name="GPMEntry" Grid.Row="2" Grid.Column="1" TextColor="Black" Text="{Binding GPM}"/>
+                    <Label Grid.Row="2" x:Name="GPMLabel2" Grid.Column="2" Text="GPM" FontSize="18" Margin="0,10,0,0" TextColor="#0000EE"/>
+                </Grid>
+
+                <Button Text="Calculate" Clicked="calculateCheck" BackgroundColor="#2196F3" TextColor="White" Margin="10,10,10,0" x:Name="CalculateButton" IsVisible="False"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

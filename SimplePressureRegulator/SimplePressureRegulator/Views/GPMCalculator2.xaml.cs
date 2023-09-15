@@ -23,7 +23,7 @@ namespace SimplePressureRegulator.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GPMCalculator2 : ContentPage
     {
-
+        string _gpm;
         public GPMCalculator2(string _valveApplication, string _valveSize, string _specificGravity, int? valveApplication, int? valveSize, double specificGravity, double inletPressure, double outletPressure)
         {
             InitializeComponent();
@@ -35,7 +35,6 @@ namespace SimplePressureRegulator.Views
             PressureDropLabel.Text = Math.Round(pressureDrop, 1).ToString();
 
             double cvFactor = 0;
-            double GPM = 0;
 
             switch (valveApplication)
             {
@@ -59,6 +58,12 @@ namespace SimplePressureRegulator.Views
                             break;
                         case 5:
                             cvFactor = 120;
+                            break;
+                        case 6:
+                            cvFactor = 490;
+                            break;
+                        case 7:
+                            cvFactor = 770;
                             break;
                     }
                     break;
@@ -122,11 +127,17 @@ namespace SimplePressureRegulator.Views
             }
             CvFactorLabel.Text = cvFactor.ToString();
 
-            GPM = cvFactor * Math.Sqrt(pressureDrop / specificGravity);
+            _gpm = Math.Round(cvFactor * Math.Sqrt(pressureDrop / specificGravity), 1).ToString();
 
-            GPMLabel.Text = "GPM: " + Math.Round(GPM, 1).ToString();
+            GPMLabel.Text = "GPM: " + _gpm;
 
 
-        } // End of Main Method        
+        } // End of Main Method
+
+        async void CopyToClipboard(object sender, EventArgs args)
+        {
+            await Clipboard.SetTextAsync(_gpm);
+            await DisplayAlert("", "Copied to Clipboard", "Okay");
+        }
     }
 }
