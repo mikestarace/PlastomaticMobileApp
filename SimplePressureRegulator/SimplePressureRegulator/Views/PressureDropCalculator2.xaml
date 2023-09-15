@@ -54,6 +54,8 @@
 
                 <Label Text="*All values rounded to the nearest tenth" FontAttributes="Italic" FontSize="14" Margin="10,10,10,0"/>
 
+                <Button x:Name="BrowseButton" Clicked="OnTapped" Margin="30,20,30,0"/>
+
 
             </StackLayout>
         </ScrollView>

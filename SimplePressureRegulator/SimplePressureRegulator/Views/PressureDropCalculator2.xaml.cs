@@ -24,6 +24,7 @@ namespace SimplePressureRegulator.Views
     public partial class PressureDropCalculator2 : ContentPage
     {
         string _pressureDrop;
+        string url;
         public PressureDropCalculator2(string _valveApplication, string _valveSize, string _specificGravity, int? valveApplication, int? valveSize, double specificGravity, double gpm)
         {
             InitializeComponent();
@@ -39,6 +40,8 @@ namespace SimplePressureRegulator.Views
             switch (valveApplication)
             {
                 case 0: // Ball Valve
+                    url = "https://plastomatic.com/products/category/ball-valves/";
+                    BrowseButton.Text = "Browse Ball Valves";
                     switch (valveSize)
                     {
                         case 0:
@@ -68,6 +71,8 @@ namespace SimplePressureRegulator.Views
                     }
                     break;
                 case 1: // Solenoid Valve EASMT
+                    url = "https://plastomatic.com/products/category/solenoid-valves/normally-closed-solenoid-valves-energize-to-open/multi-purpose-direct-acting-valves-wptfe-bellows-z-cool-coil/";
+                    BrowseButton.Text = "Browse Direct Acting Solenoid Valves";
                     switch (valveSize)
                     {
                         case 0:
@@ -82,6 +87,8 @@ namespace SimplePressureRegulator.Views
                     }
                     break;
                 case 2: // Solenoid Valve PS
+                    url = "https://plastomatic.com/products/category/solenoid-valves/normally-closed-solenoid-valves-energize-to-open/high-flow-pilot-operated-valves-w-ptfe-bellows/";
+                    BrowseButton.Text = "Browse Pilot Operated Solenoid Valves";
                     switch (valveSize)
                     {
                         case 0:
@@ -105,6 +112,8 @@ namespace SimplePressureRegulator.Views
                     }
                     break;
                 case 3: // Globe Style Shutoff Valve
+                    url = "https://plastomatic.com/products/category/shut-off-and-diverter-valves/air-operated-shut-off-valves/compact-ptfe-diaphragm-shut-off-valve/";
+                    BrowseButton.Text = "Browse Globe Style Shutoff Valves";
                     switch (valveSize)
                     {
                         case 0:
@@ -138,6 +147,10 @@ namespace SimplePressureRegulator.Views
         {
             await Clipboard.SetTextAsync(_pressureDrop);
             await DisplayAlert("", "Copied to Clipboard", "Okay");
+        }
+        private async void OnTapped(object sender, EventArgs e)
+        {
+            await Browser.OpenAsync(url);
         }
     }
 }
