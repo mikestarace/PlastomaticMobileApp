@@ -129,7 +129,7 @@ namespace SimplePressureRegulator.Views
 
             _pressureDrop = Math.Round(Math.Pow(gpm / cvFactor, 2) * specificGravity, 2).ToString();
 
-            PressureDropLabel.Text = "Pressure Drop: " + _pressureDrop;
+            PressureDropLabel.Text = "Pressure Drop: " + _pressureDrop + " PSI";
 
 
         } // End of Main Method

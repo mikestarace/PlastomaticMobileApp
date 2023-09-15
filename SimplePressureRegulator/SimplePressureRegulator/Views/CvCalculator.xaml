@@ -18,7 +18,7 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" x:Name="GPMLabel" Grid.Column="0" Text="Gallons Per Minute: " FontSize="18" Margin="15,10,0,0" TextColor="#0000EE"/>
+                    <Label Grid.Row="0" x:Name="GPMLabel" Grid.Column="0" Text="Flow Rate: " FontSize="18" Margin="15,10,0,0" TextColor="#0000EE"/>
                     <controls:CustomEntry x:Name="GPMEntry" Grid.Row="0" Grid.Column="1" TextColor="Black" Text="{Binding GPM}"/>
                     <Label Grid.Row="0" x:Name="GPMLabel2" Grid.Column="2" Text="GPM" FontSize="18" Margin="0,10,0,0" TextColor="#0000EE"/>
 

@@ -29,10 +29,10 @@ namespace SimplePressureRegulator.Views
         {
             InitializeComponent();
             BindingContext = this;
-            GPMLabel.Text = _gpm;
+            GPMLabel.Text = _gpm + " GPM";
             GravityLabel.Text = _specificGravity;
             double pressureDrop = inletPressure - outletPressure;
-            PressureDropLabel.Text = Math.Round(pressureDrop, 1).ToString();
+            PressureDropLabel.Text = Math.Round(pressureDrop, 1).ToString() + " PSI";
             _cvFactor = Math.Round(gpm / Math.Sqrt(pressureDrop / specificGravity), 1).ToString();
 
             CvLabel.Text = "Cv Factor: " + _cvFactor;

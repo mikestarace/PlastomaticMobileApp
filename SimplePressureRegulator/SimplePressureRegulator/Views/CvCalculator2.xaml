@@ -14,7 +14,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Text="GPM: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Flow Rate: " FontSize="18" Margin="10,10,0,0"/>
                     <Label Grid.Row="0" Grid.Column="1" x:Name="GPMLabel" FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
                     <Label Grid.Row="1" Grid.Column="0" Text="Specific Gravity of Fluid: " FontSize="18" Margin="10,10,0,0"/>
                     <Label Grid.Row="1" Grid.Column="1" x:Name="GravityLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
