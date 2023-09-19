@@ -9,16 +9,16 @@
                 <Label Text="GPM Calculator" FontSize="Title" Padding="30,10,30,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
                 <Label Text="Select your application parameters" HorizontalOptions="Center" FontSize="16" TextColor="Black"/>
 
-                <controls:CustomPicker x:Name="applicationPicker" Title="Type of valve" SelectedIndexChanged="AssignApplication" Margin="10" Image="ic_arrow_drop_down" TitleColor="#0000EE">
-                    <controls:CustomPicker.Items>
-                        <x:String>Ball Valve</x:String>
-                        <x:String>Direct Acting Solenoid Valve</x:String>
-                        <x:String>Pilot Operated Solenoid Valve</x:String>
-                        <x:String>Globe Style Shutoff Valve</x:String>
-                    </controls:CustomPicker.Items>
-                </controls:CustomPicker>
+                <controls:CustomPicker  x:Name="applicationPicker" Title="Type of valve" SelectedIndexChanged="AssignApplication" Margin="10" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                        <controls:CustomPicker.Items>
+                            <x:String>Ball Valve</x:String>
+                            <x:String>Direct Acting Solenoid Valve</x:String>
+                            <x:String>Pilot Operated Solenoid Valve</x:String>
+                            <x:String>Globe Style Shutoff Valve</x:String>
+                        </controls:CustomPicker.Items>
+                    </controls:CustomPicker>
 
-                <controls:CustomPicker x:Name="sizePicker" Title="Pipe size" SelectedIndexChanged="AssignPipeSize" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE"/>
+                    <controls:CustomPicker x:Name="sizePicker" Title="Pipe size" SelectedIndexChanged="AssignPipeSize" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE"/>
 
                 <Grid x:Name="EntryGrid" IsVisible="False">
                     <Grid.RowDefinitions>

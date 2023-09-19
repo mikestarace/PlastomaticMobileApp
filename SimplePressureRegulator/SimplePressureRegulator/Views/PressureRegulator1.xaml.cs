@@ -44,7 +44,7 @@ namespace SimplePressureRegulator.Views
 
             desiredSetPressurePicker.SelectedItem = null;
             desiredSetPressure = null;
-            desiredSetPressurePicker.IsVisible = true;
+            desiredSetPressureGrid.IsVisible = true;
             materialPicker.Items.Clear();
             bodyMaterial = null;
             materialPicker.IsVisible = true;
@@ -276,6 +276,11 @@ namespace SimplePressureRegulator.Views
             }
         }
         // END: Flow rate entry
+
+        async void DisplayInfo(object sender, EventArgs args)
+        {
+            await DisplayAlert("Desired Set Pressure", "The primary purpose of a regulator is to convert varying or excessive upstream pressure to a predetermined maximum downstream pressure. This is usually for one of the following reasons: \r\n \r\n1. Protect downstream instrumentation from exposure to excessive inlet pressure.  \r\n2. Regulate to the correct pressure range so that a flow system or piece of equipment can operate safely and effectively.  \r\n \r\nThe controlled or regulated pressure is always a reduction from the inlet pressure.  Plast-O-Matic refers to the specified or targeted reduced downstream pressure in a system as the “set pressure,”  because the regulator must be “set” to this pressure.  \r\n", "Okay");
+        }
 
         async void calculateCheck(object sender, EventArgs args)
         {
