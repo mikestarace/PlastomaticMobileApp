@@ -74,5 +74,12 @@ namespace SimplePressureRegulator.Services
             var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(json);
             return products;
         }
+
+        public static async Task<IEnumerable<Product>> GetCAFE(string valveType, string controlOptions)
+        {
+            var json = await client.GetStringAsync($"api/products/CAFE/" + valveType + "/" + controlOptions);
+            var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(json);
+            return products;
+        }
     }
 }

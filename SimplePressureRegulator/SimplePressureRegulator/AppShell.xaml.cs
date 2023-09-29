@@ -25,6 +25,8 @@ namespace SimplePressureRegulator
             Routing.RegisterRoute(nameof(CvCalculator2), typeof(CvCalculator2));
             Routing.RegisterRoute(nameof(PressureDropCalculator), typeof(PressureDropCalculator));
             Routing.RegisterRoute(nameof(PressureDropCalculator2), typeof(PressureDropCalculator2));
+            Routing.RegisterRoute(nameof(Cafe), typeof(Cafe));
+            Routing.RegisterRoute(nameof(Cafe2), typeof(Cafe2));
         }
     }
 }

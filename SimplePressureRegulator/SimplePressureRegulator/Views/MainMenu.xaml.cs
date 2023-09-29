@@ -40,5 +40,9 @@ namespace SimplePressureRegulator.Views
         {
             await Shell.Current.GoToAsync(nameof(PressureDropCalculator));
         }
+        async void StartCafe(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(Cafe));
+        }
     }
 }

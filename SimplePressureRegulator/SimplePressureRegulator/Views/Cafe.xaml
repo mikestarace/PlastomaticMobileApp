@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:SimplePressureRegulator.Controls"
+             x:Class="SimplePressureRegulator.Views.Cafe">
+    <ContentPage.Content>
+        <ScrollView HeightRequest="1000" Margin="0,0,0,10">
+            <StackLayout>
+                <Label Text="" FontSize="5"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+                <Label Text="CAFE Configurator" FontSize="Title" Padding="30,10,30,10"  HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+                <Label Text="Select your application parameters" HorizontalOptions="Center" FontSize="16" TextColor="Black"/>
+
+                <controls:CustomPicker x:Name="typePicker" Title="Type of valve" SelectedIndexChanged="AssignType" Margin="10" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                    <controls:CustomPicker.Items>
+                        <x:String>2-way</x:String>
+                        <x:String>3-way</x:String>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
+
+                <controls:CustomPicker x:Name="oledPicker" Title="OLED Display" SelectedIndexChanged="AssignOLED" Margin="10" Image="ic_arrow_drop_down" TitleColor="#0000EE" IsVisible="False">
+                    <controls:CustomPicker.Items>
+                        <x:String>Yes</x:String>
+                        <x:String>No</x:String>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
+
+                <controls:CustomPicker x:Name="speedPicker" Title="Actuator Speed" SelectedIndexChanged="AssignSpeed" Margin="10" Image="ic_arrow_drop_down" TitleColor="#0000EE" IsVisible="False"/>
+
+
+                <controls:CustomPicker x:Name="controlOptionsPicker" Title="Control Options" SelectedIndexChanged="AssignControlOptions" Margin="10" Image="ic_arrow_drop_down" TitleColor="#0000EE" IsVisible="False">
+                    <controls:CustomPicker.Items>
+                        <x:String>ON/OFF</x:String>
+                        <x:String>ON/OFF w/ Failsafe</x:String>
+                        <x:String>4-20mA</x:String>
+                        <x:String>4-20mA w/ Failsafe</x:String>
+                        <x:String>0-10VDC</x:String>
+                        <x:String>0-10VDC w/ Failsafe</x:String>
+                        <x:String>Modbus</x:String>
+                        <x:String>Modbus w/ Failsafe</x:String>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
+
+                <controls:CustomPicker x:Name="connectionPicker" Title="Connection Type" SelectedIndexChanged="AssignConnection" Margin="10" Image="ic_arrow_drop_down" TitleColor="#0000EE" IsVisible="False">
+                    <controls:CustomPicker.Items>
+                        <x:String>NPT Threads</x:String>
+                        <x:String>Metric Socket</x:String>
+                        <x:String>IPS Socket</x:String>
+                        <x:String>BSP Threads</x:String>
+                        <x:String>ANSI 150 Flanges</x:String>
+                        <x:String>Asahi Spigot</x:String>
+                        <x:String>GF+ Spigot</x:String>
+                        <x:String>SCH. 80 Spigot</x:String>
+                        <x:String>Sanitary Tri-Clamp</x:String>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
+
+                <controls:CustomPicker x:Name="sizePicker" Title="Pipe size" SelectedIndexChanged="AssignPipeSize" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE"/>
+
+                <controls:CustomPicker x:Name="materialPicker" Title="Body Material" SelectedIndexChanged="AssignMaterial" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE"/>
+
+                <controls:CustomPicker x:Name="sealMaterialPicker" Title="Seal Material" SelectedIndexChanged="AssignSealMaterial" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE">
+                    <controls:CustomPicker.Items>
+                        <x:String>Viton</x:String>
+                        <x:String>EPDM</x:String>
+                    </controls:CustomPicker.Items>
+                </controls:CustomPicker>
+
+                <controls:CustomPicker x:Name="ballOptionsPicker" Title="Ball Options" SelectedIndexChanged="AssignBallOptions" Margin="10" FontSize="18" IsVisible="False" Image="ic_arrow_drop_down" TitleColor="#0000EE"/>
+
+                <Button Text="Configure Part Number" Clicked="calculateCheck" BackgroundColor="#2196F3" TextColor="White" Margin="10,10,10,0" x:Name="CalculateButton" IsVisible="False"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
