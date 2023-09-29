@@ -70,7 +70,7 @@ namespace SimplePressureRegulator.Droid
             Picker model = Element;
             items = model.Items.ToArray(); // Adding picker items to array
             AlertDialog.Builder builder = new AlertDialog.Builder(this.Context);
-            builder.SetTitle("Select a " + model.Title.ToLower() ?? ""); // Sets the title of the picker AlertDialog box
+            builder.SetTitle("Select " + model.Title ?? ""); // Sets the title of the picker AlertDialog box
             Android.Views.View view = LayoutInflater.From(this.Context).Inflate(Resource.Layout.listview, null);
             Android.Widget.ListView listView = view.FindViewById<Android.Widget.ListView>(Resource.Id.listView1); // finds listView 1 inside the listview xml file
 

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:SimplePressureRegulator.Services" xmlns:model="clr-namespace:SimplePressureRegulator.Models"
+             x:Class="SimplePressureRegulator.Views.Cafe2">
+
+    <ContentPage.Content>
+        <ScrollView HeightRequest="1000" Margin="0,0,0,10">
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Valve Type: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label FontAttributes="Bold" Grid.Row="0" Grid.Column="1" x:Name="ValveTypeLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="OLED Display: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="0" Grid.Column="1" x:Name="OLEDLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                    <Label Grid.Row="1" Grid.Column="0" x:Name="SpeedLabel2" Text="Actuator Speed: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="1" Grid.Column="1" x:Name="SpeedLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                    <Label Grid.Row="2" Grid.Column="0" x:Name="ControlOptionsLabel2" Text="Control Options: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="2" Grid.Column="1" x:Name="ControlOptionsLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                    <Label Grid.Row="3" Grid.Column="0" x:Name="ConnectionTypeLabel2" Text="Connection Type: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="3" Grid.Column="1" x:Name="ConnectionTypeLabel"  FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                    <Label Grid.Row="4" Grid.Column="0" x:Name="SizeLabel2" Text="Valve Size: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="4" Grid.Column="1" x:Name="SizeLabel" FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                    <Label Grid.Row="5" Grid.Column="0" x:Name="MaterialLabel2" Text="Body Material: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="5" Grid.Column="1" x:Name="MaterialLabel" FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                    <Label Grid.Row="6" Grid.Column="0" x:Name="SealMaterialLabel2" Text="Seal Material: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="6" Grid.Column="1" x:Name="SealMaterialLabel" FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                    <Label Grid.Row="7" Grid.Column="0" x:Name="BallOptionsLabel2" Text="Ball Options: " FontSize="18" Margin="10,10,0,0"/>
+                    <Label Grid.Row="7" Grid.Column="1" x:Name="BallOptionsLabel" FontSize="18" Margin="0,10,10,0" Grid.ColumnSpan="2" HorizontalTextAlignment="End"/>
+                </Grid>
+
+
+                <Line Stroke="Red" X2="1000" />
+
+
+                <Label Text="Loading valves..."
+               x:Name="LabelLoad"
+               IsVisible="{Binding IsBusy}"
+               FontSize="18"
+               HorizontalOptions="Center"/>
+
+
+                <StackLayout Padding="10" BindableLayout.ItemsSource="{Binding Product}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="20" HasShadow="True">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnTapped"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <Image Source="{Binding Image}" WidthRequest="66" />
+                                    <StackLayout VerticalOptions="Center">
+                                        <Label
+                                        FontSize="Medium"
+                                        Text="{Binding PartNumber}"
+                                        VerticalOptions="Center" />
+                                        <Label
+                                        FontSize="Medium"
+                                        Text="Click to view data sheet"
+                                        VerticalOptions="Center" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+
+                <Label Text="Disclaimer: Valve appearance may vary based on size and materials" FontAttributes="Italic" FontSize="14" Margin="10,10,10,0"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

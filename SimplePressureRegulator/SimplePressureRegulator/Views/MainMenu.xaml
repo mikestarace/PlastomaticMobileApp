@@ -26,7 +26,7 @@
             
             <Button Text="Pressure Regulator Sizing" Clicked="StartPressureRegulator" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
             <Button Text="Water Hammer Arrestor Sizing" Clicked="StartPulsationDampener" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
-            <Button Text="More coming soon..."/>
+            <Button Text="CAFE Electric Actuated Ball Valve Config" Clicked="StartCafe" BackgroundColor="#2196F3" TextColor="White" Margin="0,0,0,5"/>
         </StackLayout>
     </StackLayout>
 
