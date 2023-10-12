@@ -60,7 +60,7 @@ namespace SimplePressureRegulator.Views
             sealMaterialPicker.IsVisible = false;
             ballOptionsPicker.Items.Clear();
             ballOptions = null;
-            ballOptionsPicker.IsVisible = false;
+            ballOptionsGrid.IsVisible = false;
 
             switch (valveType)
             {
@@ -68,8 +68,8 @@ namespace SimplePressureRegulator.Views
                     speedPicker.Items.Add("5 second");
                     speedPicker.Items.Add("1 second");
                     ballOptionsPicker.Items.Add("None");
-                    ballOptionsPicker.Items.Add("Linear Flow Ball");
                     ballOptionsPicker.Items.Add("Vented Ball");
+                    ballOptionsPicker.Items.Add("Linear Flow Ball");
                     ballOptionsPicker.Items.Add("15° V-Cut Ball");
                     ballOptionsPicker.Items.Add("30° V-Cut Ball");
                     ballOptionsPicker.Items.Add("45° V-Cut Ball");
@@ -134,7 +134,7 @@ namespace SimplePressureRegulator.Views
             sealMaterialPicker.IsVisible = false;
             ballOptionsPicker.SelectedItem = null;
             ballOptions = null;
-            ballOptionsPicker.IsVisible = false;
+            ballOptionsGrid.IsVisible = false;
         }
 
         void AssignSpeed(object sender, EventArgs args)
@@ -165,7 +165,7 @@ namespace SimplePressureRegulator.Views
             sealMaterialPicker.IsVisible = true;
             ballOptionsPicker.SelectedItem = null;
             ballOptions = null;
-            ballOptionsPicker.IsVisible = true;
+            ballOptionsGrid.IsVisible = true;
             CalculateButton.IsVisible = true;
             switch (connectionType)
             {
@@ -327,6 +327,11 @@ namespace SimplePressureRegulator.Views
             ballOptions = ballOptionsPicker.SelectedIndex;
         }
         // END: Picker Methods
+
+        async void DisplayInfo(object sender, EventArgs args)
+        {
+            await DisplayAlert("Ball Options", "Most applications use a “Standard 2-way” or full flow ball, which is the default option.  “Vented ball” refers to a small hole drilled for sodium hypochlorite and other applications prone to outgassing.   When turned to the closed position, the hole allows any liquid or gas in the ball to flow freely in and out of the ball.  This eliminates the possibility of catastrophic trapped gas explosions in the ball.  “Linear Flow” is a specially-cut opening profile that eliminates the sudden surge of flow common when opening standard full flow balls.  Flow increases at a linear rate as the ball is opened, and decreases at a linear rate as the ball is closed.  This is commonly used with modulating control to provide precise flow rates.  “V-Cut” offers similar control; these are custom angle cut profiles to provide very specific flow rates.", "Okay");
+        }
 
         async void calculateCheck(object sender, EventArgs args)
         {
